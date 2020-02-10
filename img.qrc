@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>my_blog.jpg</file>
+        <file>my_sub.jpg</file>
+    </qresource>
+</RCC>

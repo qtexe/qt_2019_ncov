@@ -53,7 +53,6 @@ int Dialog::dataParse(QByteArray str)
 
             disInfo("更新成功");
             connect(ui->widget_chart, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(widget_chart_event(QMouseEvent*)));
-
             connect(ui->rb_group, SIGNAL(buttonClicked(int)), this, SLOT(drawCharts(int)));
             //默认绘制
             ui->rb0_add->setChecked(true);
@@ -159,7 +158,7 @@ void Dialog::chinaTreeParse(QJsonObject chinaTree)
     QString chinaTotalHeal    = QString::number(chinaTotal_obj.value("heal").toInt());        //1301
 //    ui->tb_info_2->setText(chinaName);
 
-    qDebug() << chinaName << chinaTotalConfirm << chinaTotalSuspect << chinaTotalHeal << chinaTotalDead;;
+//    qDebug() << chinaName << chinaTotalConfirm << chinaTotalSuspect << chinaTotalHeal << chinaTotalDead;;
 
     QJsonArray provinces_obj = chinaTree.value("children").toArray();    //包含所有的省份
 
@@ -228,7 +227,8 @@ void Dialog::countryTreeParse(QJsonArray areaTree_obj)
 {
     ui->tree_2->clear();
     ui->tree_2->sortByColumn(1, Qt::DescendingOrder);      //累计确诊排序
-
+    uint16_t TotalConfirm = 0;
+    uint16_t TotalDead = 0;
     for(int i = 1; i < areaTree_obj.size(); i++)
     {
         QJsonObject obj = areaTree_obj.at(i).toObject();
@@ -236,7 +236,7 @@ void Dialog::countryTreeParse(QJsonArray areaTree_obj)
         QJsonObject countryTotal_obj = obj.value("total").toObject();
         uint16_t countryTotalConfirm = countryTotal_obj.value("confirm").toDouble();
         uint16_t countryTotalHeal    = countryTotal_obj.value("heal").toDouble();
-        uint16_t countryTotalDead    = countryTotal_obj.value("Dead").toDouble();
+        uint16_t countryTotalDead    = countryTotal_obj.value("dead").toDouble();
         //0      3    2     0
         //国家  确诊  治愈  死亡
         QTreeWidgetItem *country = new QTreeWidgetItem(ui->tree_2);
@@ -244,16 +244,21 @@ void Dialog::countryTreeParse(QJsonArray areaTree_obj)
         country->setData(1, Qt::DisplayRole, countryTotalConfirm);
         country->setData(2, Qt::DisplayRole, countryTotalHeal);
         country->setData(3, Qt::DisplayRole, countryTotalDead);
+
+        TotalConfirm += countryTotalConfirm;
+        TotalDead += countryTotalDead;
     //    qDebug() << countryName << countryTotalConfirm << countryTotalHeal <<countryTotalDead << countryTotalSucpect ;
     }
+    QString text = "确诊" + QString::number(TotalConfirm) + "例,死亡" + QString::number(TotalDead) + "例";
+    ui->lbe_countryTotal->setText(text);
 }
 
 int Dialog::getTotalAddData(QJsonObject chinaTotal, QJsonObject chinaAdd)
 {
     if(!chinaTotal.isEmpty() && !chinaAdd.isEmpty())
     {
-        uint16_t chinaTotal_confirm, chinaTotal_suspect, chinaTotal_dead, chinaTotal_heal;
-        uint16_t chinaAdd_confirm, chinaAdd_suspect, chinaAdd_dead, chinaAdd_heal;
+        int chinaTotal_confirm, chinaTotal_suspect, chinaTotal_dead, chinaTotal_heal;
+        int chinaAdd_confirm, chinaAdd_suspect, chinaAdd_dead, chinaAdd_heal;
 
         getNum(chinaAdd, &chinaAdd_confirm, &chinaAdd_suspect, &chinaAdd_dead, &chinaAdd_heal);
         getNum(chinaTotal, &chinaTotal_confirm, &chinaTotal_suspect, &chinaTotal_dead, &chinaTotal_heal);
@@ -267,6 +272,9 @@ int Dialog::getTotalAddData(QJsonObject chinaTotal, QJsonObject chinaAdd)
 //        ui->lbe_add_suspect->setText("+" + QString::number(chinaAdd_suspect));        //取最新值
         ui->lbe_add_dead->setText("+" + QString::number(chinaAdd_dead));
         ui->lbe_add_heal->setText("+" + QString::number(chinaAdd_heal));
+        QString tip = "较上日国家卫健委公布的现有疑似病例数" + QString::number(chinaAdd_suspect);
+
+        ui->lbe_suspect->setToolTip(tip);
 
         return 0;
     }
@@ -277,7 +285,23 @@ int Dialog::getTotalAddData(QJsonObject chinaTotal, QJsonObject chinaAdd)
 void Dialog::articleParse(QJsonArray arr)
 {
     uint16_t arrSize = arr.size();
-    qDebug() << "共 " << arrSize << " 条新闻";
+//    qDebug() << "共 " << arrSize << " 条新闻";
+
+    QFile file("html_template.txt");
+
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        qDebug() << "文件打开失败";
+    }
+
+    QByteArray allData = file.readAll();
+    file.close();
+    QList<QByteArray> ba;
+
+//    ba = allData.split("");
+    ba = allData.split('*');
+//    qDebug() << ba.size();
+    QString html;
     for(int i = 0; i < arrSize; i++)
     {
         QJsonObject article_obj = arr.at(i).toObject();//每一篇文件信息
@@ -287,12 +311,16 @@ void Dialog::articleParse(QJsonArray arr)
         QString desc = article_obj.value("desc").toString();
         QString url = article_obj.value("url").toString();
         QString title = article_obj.value("title").toString();
-
+        QString str = ba[0] + publish_time + ba[1] + title + ba[2] + desc + ba[3] + url + ba[4] + media + ba[5];
+        html.append(str);
 //        qDebug() << publish_time << media << title << url;
     }
+//    qDebug() << html;
+    ui->tb_news->clear();
+    ui->tb_news->setHtml(html);
 }
 //获取人数
-int Dialog::getNum(QJsonObject obj, uint16_t *num_confirm, uint16_t *num_suspect, uint16_t *num_dead, uint16_t *num_heal)
+int Dialog::getNum(QJsonObject obj, int *num_confirm, int *num_suspect, int *num_dead, int *num_heal)
 {
     if(!obj.isEmpty())
     {

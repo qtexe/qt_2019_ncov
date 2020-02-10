@@ -1,0 +1,14 @@
+INPUT(
+./release\main.o
+./release\dialog.o
+./release\qcustomplot.o
+./release\parse.o
+./release\network.o
+./release\plot.o
+./release\slots.o
+./release\about.o
+./release\qrc_img.o
+./release\moc_dialog.o
+./release\moc_qcustomplot.o
+./release\moc_about.o
+);

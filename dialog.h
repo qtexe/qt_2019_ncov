@@ -20,6 +20,7 @@
 #include "qjsonvalue.h"
 
 #include "qcustomplot.h"
+#include "about.h"
 
 namespace Ui {
 class Dialog;
@@ -36,7 +37,7 @@ public:
     int dataParse(QByteArray str);
     int readFromFile(QString filename);
 
-    int getNum(QJsonObject obj, uint16_t *num_confirm, uint16_t *num_suspect, uint16_t *num_dead, uint16_t *num_heal);
+    int getNum(QJsonObject obj, int *num_confirm, int *num_suspect, int *num_dead, int *num_heal);
     int getDay(QString date);
     int getTotalAddData(QJsonObject chinaTotal, QJsonObject chinaAdd);
 
@@ -78,6 +79,8 @@ private slots:
     void anchorClickedSlot(const QUrl& url);
     void drawCharts(int id);
 
+    void on_btn_about_clicked();
+
 private:
     Ui::Dialog *ui;
 
@@ -94,7 +97,7 @@ private:
     //网易api,目前还没新闻，和腾讯非常相似
 //    QString dataApi = "https://c.m.163.com/ug/api/wuhan/app/data/list-total?t=";
 //    QString newsApi = "http://api.tianapi.com/txapi/ncov/index?key=964dc226dd5b57e892e6199735b6c55f";
-
+    QString rumorApi = "https://vp.fact.qq.com/loadmore?page=0&_=1581341095686";
     bool dataFlag = true;   //true:data, false:news
 
     QColor clr1_1 = QColor(0, 93, 255);
@@ -125,6 +128,7 @@ private:
     QVector<double> chinaDayListDeadRate;  //累计死亡率，从1.20开始
     QVector<QString> RateDate;  //从1.20日开始
 
+    about ab_win;
 };
 
 class ncovPerson

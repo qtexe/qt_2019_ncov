@@ -29,16 +29,22 @@ SOURCES += main.cpp\
     parse.cpp \
     network.cpp \
     plot.cpp \
-    slots.cpp
+    slots.cpp \
+    about.cpp
 
 HEADERS  += dialog.h \
-    qcustomplot.h
+    qcustomplot.h \
+    about.h
 
-FORMS    += dialog.ui
+FORMS    += dialog.ui \
+    about.ui
 
 
 QT += network
 QT += printsupport
+
+RESOURCES += \
+    img.qrc
 
 
 
