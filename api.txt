@@ -1,0 +1,48 @@
+新浪新闻:
+    城市名为unicode
+    https://interface.sina.cn/news/wap/fymap2020_data.d.json?1580868609265&&callback=sinajp_15808686092969432005074395626
+
+腾讯api地址
+https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&_=1580872265054
+
+丁香园疫情新闻：
+http://api.tianapi.com/txapi/ncov/index?key=964dc226dd5b57e892e6199735b6c55f
+
+各平台肺炎疫情实时动态
+
+梅斯：http://m.medsci.cn/wh.asp
+
+新浪：https://news.sina.cn/zt_d/yiqing0121
+
+网易：https://news.163.com/special/epidemic/
+
+知乎：https://www.zhihu.com/special/19681091
+
+一财：https://m.yicai.com/news/100476965.html
+
+丁香：https://3g.dxy.cn/newh5/view/pneumonia
+
+腾讯：https://news.qq.com/zt2020/page/feiyan.htm
+
+夸克：https://broccoli.uc.cn/apps/pneumonia/routes/index
+
+百度：https://voice.baidu.com/act/newpneumonia/newpneumonia
+
+>>> import time, json, requests
+>>> url = 'https://view.inews.qq.com/g2/getOnsInfo?name=wuwei_ww_area_counts&callback=&_=%d'%int(time.time()*1000)
+>>> data = json.loads(requests.get(url=url).json()['data'])
+>>> print(len(data))
+301
+
+
+全国累计
+https://ncov-api.werty.cn:2021/latest/tx/
+
+
+
+
+
+
+
+
+
