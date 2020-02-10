@@ -46,32 +46,24 @@ public:
 
     QVector<double> QStringToDouble(QVector<QString> str, uint16_t len);
     double getMaxVaule(QVector<double> dub1, QVector<double> dub2);
-    void drawLine(void);
-    //参数是string
-    void widgetDrawLine(QCustomPlot *widget, QVector<QString> date,
-                        QVector<QString> data1, QVector<QString> data2);
     //参数是double
     void widgetDrawLine(QCustomPlot *widget, QVector<QString> date,
                         QVector<double> data1Dub, QVector<double> data2Dub);
+    void widgetDrawLine(QCustomPlot *widget, QString chartName, QString name1, QString name2,
+                        QColor clr1, QColor clr2, QVector<QString> date,
+                       QVector<double> data1, QVector<double> data2);
+
     void dataAddTree(QJsonObject province_obj);
     void countryTreeParse(QJsonArray areaTree_obj);
 
     void disTip(QMouseEvent *event, QCustomPlot *widget, QVector<QString> date);
-    void widgetInit(QCustomPlot *widget, QColor clr1, QColor clr2);
     void chinaTreeParse(QJsonObject chinaTree);
-    uint8_t getValueType(QJsonObject obj, QString str);
     void articleParse(QJsonArray arr);
 
-    enum valueType {
-        Null =  0x0,
-        Bool = 0x1,
-        Double = 0x2,
-        String = 0x3,
-        Array = 0x4,
-        Object = 0x5,
-        Undefined = 0x80
-    };
-    uint8_t dataType = Null;
+    void wigetAddGraph(QCustomPlot *widget);
+    void wigetSetColor(QCustomPlot *widget, QColor clr1, QColor clr2);
+    QString rgbToStyle(QColor rbg);
+
 
 private slots:
     void on_btn_update_clicked();
@@ -81,8 +73,10 @@ private slots:
     void widget_1_event(QMouseEvent*);
     void widget_2_event(QMouseEvent*);
     void widget_3_event(QMouseEvent*);
+    void widget_chart_event(QMouseEvent*);
     void update();
     void anchorClickedSlot(const QUrl& url);
+    void drawCharts(int id);
 
 private:
     Ui::Dialog *ui;
@@ -99,30 +93,29 @@ private:
 
     //网易api,目前还没新闻，和腾讯非常相似
 //    QString dataApi = "https://c.m.163.com/ug/api/wuhan/app/data/list-total?t=";
-
 //    QString newsApi = "http://api.tianapi.com/txapi/ncov/index?key=964dc226dd5b57e892e6199735b6c55f";
 
     bool dataFlag = true;   //true:data, false:news
 
+    QColor clr1_1 = QColor(0, 93, 255);
+    QColor clr1_2 = QColor(237, 160, 70);
+
+    QColor clr2_1 = QColor(245, 60, 60);
+    QColor clr2_2 = QColor(36, 200, 200);
+
+    QColor clr3_1 = QColor(33, 144, 5);
+    QColor clr3_2 = QColor(135, 135, 139);
+
+    QColor clr4_1 = QColor(33, 144, 5);
+    QColor clr4_2 = QColor(245, 60, 60);
+
     QVector<QString> AddDate;       //新增从1.20
-
-    QVector<QString> AddConfirm;    //新增确诊
-    QVector<QString> AddSuspect;    //新增疑似
-    QVector<QString> AddDead;       //新增死亡
-    QVector<QString> AddHeal;       //新增治愈
-
     QVector<double> AddConfirmDub;    //新增确诊
     QVector<double> AddSuspectDub;    //新增疑似
     QVector<double> AddDeadDub;       //新增死亡
     QVector<double> AddHealDub;       //新增治愈
 
     QVector<QString> TotalDate;     //累计从1.13
-
-    QVector<QString> TotalConfirm;  //累计确诊
-    QVector<QString> TotalSuspect;  //累计疑似
-    QVector<QString> TotalDead;     //累计死亡
-    QVector<QString> TotalHeal;     //累计治愈
-
     QVector<double> TotalConfirmDub;  //累计确诊
     QVector<double> TotalSuspectDub;  //累计疑似
     QVector<double> TotalDeadDub;     //累计死亡
@@ -130,6 +123,8 @@ private:
 
     QVector<double> chinaDayListHealRate;  //累计治愈率，从1.20开始
     QVector<double> chinaDayListDeadRate;  //累计死亡率，从1.20开始
+    QVector<QString> RateDate;  //从1.20日开始
+
 };
 
 class ncovPerson

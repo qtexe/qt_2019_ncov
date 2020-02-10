@@ -25,7 +25,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         dialog.cpp \
-    qcustomplot.cpp
+    qcustomplot.cpp \
+    parse.cpp \
+    network.cpp \
+    plot.cpp \
+    slots.cpp
 
 HEADERS  += dialog.h \
     qcustomplot.h
