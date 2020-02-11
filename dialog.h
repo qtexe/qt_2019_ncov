@@ -64,6 +64,7 @@ public:
     void wigetAddGraph(QCustomPlot *widget);
     void wigetSetColor(QCustomPlot *widget, QColor clr1, QColor clr2);
     QString rgbToStyle(QColor rbg);
+    void setSelectStyle(int id);
 
 
 private slots:
@@ -80,7 +81,7 @@ private slots:
     void drawCharts(int id);
 
     void on_btn_about_clicked();
-
+    void closeEvent(QCloseEvent *win);
 private:
     Ui::Dialog *ui;
 
@@ -99,7 +100,7 @@ private:
 //    QString newsApi = "http://api.tianapi.com/txapi/ncov/index?key=964dc226dd5b57e892e6199735b6c55f";
     QString rumorApi = "https://vp.fact.qq.com/loadmore?page=0&_=1581341095686";
     bool dataFlag = true;   //true:data, false:news
-
+    int clickId = 0;
     QColor clr1_1 = QColor(0, 93, 255);
     QColor clr1_2 = QColor(237, 160, 70);
 

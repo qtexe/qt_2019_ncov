@@ -1,6 +1,17 @@
 ﻿#include "dialog.h"
 #include "ui_dialog.h"
 
+void Dialog::closeEvent(QCloseEvent *win)
+{
+    int ret = QMessageBox::information(this, "提示", "是否关闭?", "是/Yes", "否/No");
+    if(ret == 0)
+    {
+        win->accept();//不会将事件传递给组件的父组件
+        qDebug()<<"已关闭";
+    }
+    else
+        win->ignore();
+}
 //鼠标悬停，显示曲线值
 void Dialog::disTip(QMouseEvent *event, QCustomPlot *widget, QVector<QString> date)
 {
@@ -28,10 +39,20 @@ void Dialog::disTip(QMouseEvent *event, QCustomPlot *widget, QVector<QString> da
         {
             QString lineName = widget->graph(i)->name();
             //获得x轴坐标位置对应的曲线上y的值
-            int y = widget->graph(i)->data()->at(x_val)->value;
-            str = QString::number(y);
+            if(clickId < 3)
+            {
+                int y = widget->graph(i)->data()->at(x_val)->value;
+                str = QString::number(y);
+            }
+            else
+            {
+                double y= widget->graph(i)->data()->at(x_val)->value;
+                str = QString::number(y, 10, 1);
+            }
             strToolTip += lineName + "：";
             strToolTip += str;
+            if(clickId == 3)
+                strToolTip += "%";
             if(i != lineNum - 1)
                 strToolTip += "\n";
         }
@@ -56,11 +77,11 @@ void Dialog::widget_3_event(QMouseEvent *event)
 
 void Dialog::widget_chart_event(QMouseEvent *event)
 {
-    if(ui->rb1_total_CfmSpt->isChecked() | ui->rb2_toal_HealDead->isChecked())
+    if(clickId == 1 | clickId == 2)
     {
         disTip(event, ui->widget_chart, TotalDate);
     }
-    else if(ui->rb0_add->isChecked())
+    else if(clickId == 0)
         disTip(event, ui->widget_chart, AddDate);
 //    else if(ui->rb3_rate->isChecked())
     else
@@ -70,14 +91,9 @@ void Dialog::widget_chart_event(QMouseEvent *event)
 //点击不同的按钮绘制不同的曲线
 void Dialog::drawCharts(int id)
 {
-    qDebug() << id;
-//    qDebug() << ui->rb_group->button(id)->text();
-/*
-    int id_rb0 = ui->rb_group->id(ui->rb0_add);
-    int id_rb1 = ui->rb_group->id(ui->rb1_total_CfmSpt);
-    int id_rb2 = ui->rb_group->id(ui->rb2_toal_HealDead);
-    int id_rb3 = ui->rb_group->id(ui->rb3_rate);
-*/
+//    qDebug() << id;
+    setSelectStyle(id);
+    clickId = id;
     switch(id)
     {
         case 0:
@@ -99,3 +115,31 @@ void Dialog::drawCharts(int id)
         default:break;
     }
 }
+
+void Dialog::setSelectStyle(int id)
+{
+    QString style1 =
+            "border:3px groove rgb(126, 126, 126);"       //边框线条粗线,线型,颜色
+            "border-radius:8px;"                       //圆角弧度
+            "padding:2px 4px;"                        //文字离边框的距离,H/L
+            "background-color: rgb(243, 246, 248);"    //背景颜色
+            "color: rgb(0, 0, 0);";                //字体黑色;     //未选中
+
+    QString style2 =
+            "border:3px groove rgb(126, 126, 226);"      //边框线条粗线,线型,颜色
+            "border-radius:8px;"                     //圆角弧度
+            "padding:2px 4px;"                     //文字离边框的距离,H/L
+            "background-color: rgb(238,244,255);"     //背景颜色
+            "color: rgb(22,107,241);" ;                  //字体蓝色;
+
+    ui->btn_group->button(id)->setStyleSheet(style2);
+
+    QList<QAbstractButton*> btnList = ui->btn_group->buttons();
+    btnList.removeAt(id);       //移除当前，其余设置未选中状态
+    for(int i = 0; i < btnList.size(); i++)
+    {
+        btnList.at(i)->setStyleSheet(style1);
+    }
+
+}
+

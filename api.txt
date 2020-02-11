@@ -38,7 +38,24 @@ http://api.tianapi.com/txapi/ncov/index?key=964dc226dd5b57e892e6199735b6c55f
 全国累计
 https://ncov-api.werty.cn:2021/latest/tx/
 
+按钮边框
 
+未选中
+border:3px groove rgb(255, 0, 0);       //边框线条粗线,线型,颜色
+border-radius:8px;                      //圆角弧度
+padding:2px 4px;                        //文字离边框的距离,H/L
+background-color: rgb(243, 246, 248);   //背景颜色
+color: rgb(255, 255, 255);
+
+
+选中：
+border:3px groove rgb(255, 0, 0);       //边框线条粗线,线型,颜色
+border-radius:8px;                      //圆角弧度
+padding:2px 4px;                        //文字离边框的距离,H/L
+background-color: rgb(243, 246, 248);   //背景颜色
+color: rgb(243, 246, 248);
+
+字体颜色:color: rgb(243, 246, 248);
 
 
 

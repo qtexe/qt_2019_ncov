@@ -17,13 +17,13 @@ CXXFLAGS      = -pipe -fno-keep-inline-dllexport -O2 -std=gnu++11 -frtti -Wall -
 INCPATH       = -I..\..\qt_2019_ncov -I. -ID:\Qt\Qt5.8.0\5.8\mingw53_32\include -ID:\Qt\Qt5.8.0\5.8\mingw53_32\include\QtPrintSupport -ID:\Qt\Qt5.8.0\5.8\mingw53_32\include\QtWidgets -ID:\Qt\Qt5.8.0\5.8\mingw53_32\include\QtGui -ID:\Qt\Qt5.8.0\5.8\mingw53_32\include\QtANGLE -ID:\Qt\Qt5.8.0\5.8\mingw53_32\include\QtNetwork -ID:\Qt\Qt5.8.0\5.8\mingw53_32\include\QtCore -Irelease -I. -ID:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        -lmingw32 -LD:\Qt\Qt5.8.0\5.8\mingw53_32\lib D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libqtmain.a -LC:\utils\my_sql\my_sql\lib -LC:\utils\postgresql\pgsql\lib -lshell32 D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5PrintSupport.a D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Widgets.a D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Gui.a D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Network.a D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Core.a 
+LIBS        =        -lmingw32 -LD:\Qt\Qt5.8.0\5.8\mingw53_32\lib D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libqtmain.a -LC:\utils\my_sql\my_sql\lib -LC:\utils\postgresql\pgsql\lib -lshell32 D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5PrintSupport.a D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Widgets.a D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Gui.a D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Network.a D:\Qt\Qt5.8.0\5.8\mingw53_32\lib\libQt5Core.a release\qt_2019_ncov_resource_res.o 
 QMAKE         = D:\Qt\Qt5.8.0\5.8\mingw53_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\qt_2019_ncov_resource_res.o
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -87,8 +87,11 @@ DESTDIR_TARGET = release\qt_2019_ncov.exe
 first: all
 all: Makefile.Release  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_dialog.h ui_about.h $(OBJECTS) 
+$(DESTDIR_TARGET): ui_dialog.h ui_about.h $(OBJECTS) release/qt_2019_ncov_resource_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) object_script.qt_2019_ncov.Release  $(LIBS)
+
+release/qt_2019_ncov_resource_res.o: qt_2019_ncov_resource.rc
+	windres -i qt_2019_ncov_resource.rc -o release\qt_2019_ncov_resource_res.o --include-dir=. $(DEFINES)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Release ..\qt_2019_ncov.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -100,6 +103,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\main.o release\dialog.o release\qcustomplot.o release\parse.o release\network.o release\plot.o release\slots.o release\about.o release\qrc_img.o release\moc_dialog.o release\moc_qcustomplot.o release\moc_about.o
+	-$(DEL_FILE) release\qt_2019_ncov_resource_res.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -5582,7 +5586,49 @@ release/about.o: ../about.cpp ../about.h \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
-		ui_about.h
+		ui_about.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QFrame \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QSpacerItem \
+		D:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\about.o ..\about.cpp
 
 release/qrc_img.o: release/qrc_img.cpp 

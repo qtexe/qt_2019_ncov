@@ -80,11 +80,12 @@ void Dialog::widgetDrawLine(QCustomPlot *widget, QString chartName, QString name
     widget->xAxis->setTickLabelRotation(60);        //标签旋转角度
 
     widget->xAxis->setRange(0, dataSize);
-    if(ui->rb3_rate->isChecked())
+    if(clickId == 3)
+    {
         widget->yAxis->setRange(0, maxValue + 2);
+    }
     else
         widget->yAxis->setRange(0, maxValue + maxValue/20);
-
 
     widget->graph(0)->setData(ticks, data1);//曲线0添加数据新增确诊人数
     widget->graph(1)->setData(ticks, data2);//曲线1添加数据新增疑似人数

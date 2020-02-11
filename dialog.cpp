@@ -46,28 +46,11 @@ Dialog::Dialog(QWidget *parent) :
 
     ui->tb_news->setOpenLinks(false);
     connect(ui->tb_news, SIGNAL(anchorClicked(const QUrl&)),this, SLOT(anchorClickedSlot(const QUrl&)));
-    /* 新闻显示 */
-    /*
-    QString news;
-    QString newsDate = "1581236332000";
-    QString newsTitle = "山东出现首例死亡病例";
-    QString newsSummary = "据山东省卫健委网站9日消息，2月8日12至24时，山东省报告新型冠状病毒感染的肺炎死亡病例1例，这也是山东省首例。据悉，患者李某某，女，85岁，既往有糖尿病、高血压、冠心病、心功能衰竭、子宫肌瘤等病史。";
-    QString newsInfoSource = "人民日报";
-    QString newsSourceUrl = "http:\/\/m.weibo.cn\/2803301701\/4470091523664901";
-    newsSourceUrl.replace("\/", "/");
-    QString newsLink = "<a href=" + newsSourceUrl + ">" + newsInfoSource + "</a>";
-    news = "更新于:" + newsDate
-            + "\n标题:" + newsTitle
-            + "\n内容:" + newsSummary + "\n来源:";
-//            + "\n来源:" + newsInfoSource;
-//            + "\n地址:" + newsSourceUrl;
-    ui->tb_news->setText(news);
-    ui->tb_news->append(newsLink);
-*/
-    ui->rb_group->setId(ui->rb0_add, 0);
-    ui->rb_group->setId(ui->rb1_total_CfmSpt, 1);
-    ui->rb_group->setId(ui->rb2_toal_HealDead, 2);
-    ui->rb_group->setId(ui->rb3_rate, 3);
+
+    ui->btn_group->setId(ui->btn_line_0, 0);
+    ui->btn_group->setId(ui->btn_line_1, 1);
+    ui->btn_group->setId(ui->btn_line_2, 2);
+    ui->btn_group->setId(ui->btn_line_3, 3);
 
 //    ui->rb0_add->setCheckable(true);
 }

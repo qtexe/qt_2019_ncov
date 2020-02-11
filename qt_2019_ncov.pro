@@ -46,5 +46,8 @@ QT += printsupport
 RESOURCES += \
     img.qrc
 
+# 添加图标
+RC_ICONS = virus.ico
 
 
+CONFIG -= debug_and_release

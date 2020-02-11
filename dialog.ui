@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1180</width>
-    <height>563</height>
+    <width>1132</width>
+    <height>588</height>
    </rect>
   </property>
   <property name="font">
@@ -827,14 +827,26 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1,1">
          <item>
-          <widget class="QRadioButton" name="rb0_add">
+          <widget class="QPushButton" name="btn_line_0">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
            </property>
            <property name="font">
             <font>
@@ -842,25 +854,39 @@
              <pointsize>12</pointsize>
             </font>
            </property>
-           <property name="inputMethodHints">
-            <set>Qt::ImhMultiLine</set>
+           <property name="styleSheet">
+            <string notr="true">border:2px groove rgb(126, 126, 126);
+border-radius:8px;
+background-color: rgb(243, 246, 248);</string>
            </property>
            <property name="text">
             <string>全国疫情
 新增趋势</string>
            </property>
            <attribute name="buttonGroup">
-            <string notr="true">rb_group</string>
+            <string notr="true">btn_group</string>
            </attribute>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="rb1_total_CfmSpt">
+          <widget class="QPushButton" name="btn_line_1">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
            </property>
            <property name="font">
             <font>
@@ -868,25 +894,39 @@
              <pointsize>12</pointsize>
             </font>
            </property>
-           <property name="inputMethodHints">
-            <set>Qt::ImhMultiLine</set>
+           <property name="styleSheet">
+            <string notr="true">border:2px groove rgb(126, 126, 126);
+border-radius:8px;
+background-color: rgb(243, 246, 248);</string>
            </property>
            <property name="text">
             <string>全国累计
 确诊/疑似</string>
            </property>
            <attribute name="buttonGroup">
-            <string notr="true">rb_group</string>
+            <string notr="true">btn_group</string>
            </attribute>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="rb2_toal_HealDead">
+          <widget class="QPushButton" name="btn_line_2">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
            </property>
            <property name="font">
             <font>
@@ -894,25 +934,39 @@
              <pointsize>12</pointsize>
             </font>
            </property>
-           <property name="inputMethodHints">
-            <set>Qt::ImhMultiLine</set>
+           <property name="styleSheet">
+            <string notr="true">border:2px groove rgb(126, 126, 126);
+border-radius:8px;
+background-color: rgb(243, 246, 248);</string>
            </property>
            <property name="text">
             <string>全国累计
 治愈/死亡</string>
            </property>
            <attribute name="buttonGroup">
-            <string notr="true">rb_group</string>
+            <string notr="true">btn_group</string>
            </attribute>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="rb3_rate">
+          <widget class="QPushButton" name="btn_line_3">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>130</width>
+             <height>60</height>
+            </size>
            </property>
            <property name="font">
             <font>
@@ -920,15 +974,17 @@
              <pointsize>12</pointsize>
             </font>
            </property>
-           <property name="inputMethodHints">
-            <set>Qt::ImhMultiLine</set>
+           <property name="styleSheet">
+            <string notr="true">border:2px groove rgb(126, 126, 126);
+border-radius:8px;
+background-color: rgb(243, 246, 248);</string>
            </property>
            <property name="text">
             <string>治愈率
 病死率</string>
            </property>
            <attribute name="buttonGroup">
-            <string notr="true">rb_group</string>
+            <string notr="true">btn_group</string>
            </attribute>
           </widget>
          </item>
@@ -1042,14 +1098,6 @@ p, li { white-space: pre-wrap; }
     </layout>
    </item>
   </layout>
-  <zorder>layoutWidget</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>btn_update</zorder>
-  <zorder>label_30</zorder>
-  <zorder>tb_news</zorder>
-  <zorder>widget_chart</zorder>
-  <zorder>layoutWidget_4</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -1063,6 +1111,6 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="rb_group"/>
+  <buttongroup name="btn_group"/>
  </buttongroups>
 </ui>

@@ -10,8 +10,12 @@ int Dialog::dataParse(QByteArray str)
     if(err_rpt.error != QJsonParseError::NoError)
     {
         disInfo("JSON格式错误");
+
+        file->remove();
+        emit on_btn_update_clicked();
+
         qDebug() << "JSON格式错误";
-        return -1;
+//        return -1;
     }
     disInfo("JSON格式正确");
 //    qDebug() << "JSON格式正确";
@@ -53,14 +57,19 @@ int Dialog::dataParse(QByteArray str)
 
             disInfo("更新成功");
             connect(ui->widget_chart, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(widget_chart_event(QMouseEvent*)));
-            connect(ui->rb_group, SIGNAL(buttonClicked(int)), this, SLOT(drawCharts(int)));
+
+            connect(ui->btn_group, SIGNAL(buttonClicked(int)), this, SLOT(drawCharts(int)));
+//            connect(ui->rb_group, SIGNAL(buttonClicked(int)), this, SLOT(drawCharts(int)));
+
             //默认绘制
-            ui->rb0_add->setChecked(true);
+            setSelectStyle(0);
             widgetDrawLine(ui->widget_chart, "新增疑似/确诊趋势", "新增确诊", "新增疑似",
                 clr1_1, clr1_2, AddDate, AddConfirmDub, AddSuspectDub);
         }
+        qDebug() << "更新成功";
     }
-    qDebug() << "更新成功";
+    else
+        qDebug() << "更新失败";
     return 0;
 }
 
