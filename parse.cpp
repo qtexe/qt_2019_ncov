@@ -60,6 +60,7 @@ int Dialog::dataParse(QByteArray str)
 
             //默认绘制
             setSelectStyle(0);
+            clickId = 0;     //修复当点击死亡率按钮之后，再更新按钮，此时tip单位还是%的BUG
             widgetDrawLine(ui->widget_chart, "新增疑似/确诊趋势", "新增确诊", "新增疑似",
                 clr1_1, clr1_2, AddDate, AddConfirmDub, AddSuspectDub);
         }
