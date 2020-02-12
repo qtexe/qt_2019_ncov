@@ -1,0 +1,5 @@
+安装版：
+https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/20200212_qt_2019_ncov_install.exe
+
+免安装版：
+https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/20200212_qt_2019_ncov_portable.exe

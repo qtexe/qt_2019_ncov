@@ -1,6 +1,10 @@
 ﻿#include "dialog.h"
 #include "ui_dialog.h"
 
+void Dialog::anchorClickedSlot(const QUrl& url)
+{
+    ShellExecuteA(NULL, "open", url.toString().toStdString().c_str(), "", "", SW_SHOW);
+}
 void Dialog::closeEvent(QCloseEvent *win)
 {
     int ret = QMessageBox::information(this, "提示", "是否关闭?", "是/Yes", "否/No");

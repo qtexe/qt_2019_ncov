@@ -9,15 +9,12 @@ int Dialog::dataParse(QByteArray str)
 
     if(err_rpt.error != QJsonParseError::NoError)
     {
-        disInfo("JSON格式错误");
-
         file->remove();
         emit on_btn_update_clicked();
 
         qDebug() << "JSON格式错误";
 //        return -1;
     }
-    disInfo("JSON格式正确");
 //    qDebug() << "JSON格式正确";
     if(root_Doc.isObject())
     {
@@ -67,6 +64,7 @@ int Dialog::dataParse(QByteArray str)
                 clr1_1, clr1_2, AddDate, AddConfirmDub, AddSuspectDub);
         }
         qDebug() << "更新成功";
+//        ui->btn_update->setEnabled(true);
     }
     else
         qDebug() << "更新失败";
@@ -296,7 +294,7 @@ void Dialog::articleParse(QJsonArray arr)
     uint16_t arrSize = arr.size();
 //    qDebug() << "共 " << arrSize << " 条新闻";
 
-    QFile file("html_template.txt");
+    QFile file(newsHtmlFileName);
 
     if(!file.open(QIODevice::ReadOnly))
     {
@@ -314,16 +312,20 @@ void Dialog::articleParse(QJsonArray arr)
     for(int i = 0; i < arrSize; i++)
     {
         QJsonObject article_obj = arr.at(i).toObject();//每一篇文件信息
-        QString cmsId = article_obj.value("cmsId").toString();
+//        QString cmsId = article_obj.value("cmsId").toString();
         QString media = article_obj.value("media").toString();
         QString publish_time = article_obj.value("publish_time").toString();
         QString desc = article_obj.value("desc").toString();
         QString url = article_obj.value("url").toString();
         QString title = article_obj.value("title").toString();
-        QString str = ba[0] + publish_time + ba[1] + title + ba[2] + desc + ba[3] + url + ba[4] + media + ba[5];
+        QString str = ba[0] + title + ba[1] + desc + ba[2] + url + ba[3] + media + ba[4] + publish_time + ba[5];
         html.append(str);
+//        if(i == 0)
+//        qDebug() << html;
+
 //        qDebug() << publish_time << media << title << url;
     }
+    html.append(ba[6]);
 //    qDebug() << html;
     ui->tb_news->clear();
     ui->tb_news->setHtml(html);

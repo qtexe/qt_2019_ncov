@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1132</width>
-    <height>588</height>
+    <width>1130</width>
+    <height>645</height>
    </rect>
   </property>
   <property name="font">
@@ -22,11 +22,39 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="6,1">
+  <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="2,1">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_10" stretch="1,4">
+    <layout class="QVBoxLayout" name="verticalLayout_10" stretch="1,60,0,100">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="4,1,10">
+      <widget class="QLabel" name="lbe_pic">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>194</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/top_headv3.jpg);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="4,0,10">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_8">
          <item>
@@ -36,7 +64,7 @@
              <property name="font">
               <font>
                <family>黑体</family>
-               <pointsize>14</pointsize>
+               <pointsize>12</pointsize>
               </font>
              </property>
              <property name="styleSheet">
@@ -52,7 +80,7 @@
              <property name="font">
               <font>
                <family>黑体</family>
-               <pointsize>14</pointsize>
+               <pointsize>12</pointsize>
               </font>
              </property>
              <property name="text">
@@ -78,17 +106,11 @@
         </layout>
        </item>
        <item>
-        <spacer name="verticalSpacer">
+        <widget class="Line" name="line">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>566</width>
-           <height>13</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -107,6 +129,9 @@
                <property name="text">
                 <string>较上日</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item>
@@ -121,7 +146,7 @@
                 <string notr="true">color: rgb(245, 82, 83);</string>
                </property>
                <property name="text">
-                <string>0</string>
+                <string>+123</string>
                </property>
               </widget>
              </item>
@@ -144,7 +169,7 @@
               <string notr="true">color: rgb(245, 82, 83);</string>
              </property>
              <property name="text">
-              <string>0</string>
+              <string>12345</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -187,6 +212,9 @@
                <property name="text">
                 <string>较上日</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item>
@@ -201,7 +229,7 @@
                 <string notr="true">color: rgb(255, 150, 30);</string>
                </property>
                <property name="text">
-                <string>0</string>
+                <string>+123</string>
                </property>
               </widget>
              </item>
@@ -228,7 +256,7 @@
 </string>
              </property>
              <property name="text">
-              <string>0</string>
+              <string>12345</string>
              </property>
              <property name="textFormat">
               <enum>Qt::AutoText</enum>
@@ -274,6 +302,9 @@
                <property name="text">
                 <string>较上日</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item>
@@ -288,7 +319,7 @@
                 <string notr="true">color: rgb(23, 139, 80);</string>
                </property>
                <property name="text">
-                <string>0</string>
+                <string>+123</string>
                </property>
               </widget>
              </item>
@@ -308,7 +339,7 @@
               <string notr="true">color: rgb(23, 139, 80);</string>
              </property>
              <property name="text">
-              <string>0</string>
+              <string>12345</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -351,6 +382,9 @@
                <property name="text">
                 <string>较上日</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item>
@@ -365,7 +399,7 @@
                 <string notr="true">color: rgb(102, 102, 108);</string>
                </property>
                <property name="text">
-                <string>0</string>
+                <string>+123</string>
                </property>
               </widget>
              </item>
@@ -385,7 +419,7 @@
               <string notr="true">color: rgb(102, 102, 108);</string>
              </property>
              <property name="text">
-              <string>0</string>
+              <string>12345</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -418,7 +452,14 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_6">
+      <widget class="Line" name="line_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,8,1,3">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_10">
          <item>
@@ -426,7 +467,7 @@
            <property name="font">
             <font>
              <family>黑体</family>
-             <pointsize>14</pointsize>
+             <pointsize>13</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -442,7 +483,7 @@
            <property name="font">
             <font>
              <family>黑体</family>
-             <pointsize>9</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -571,7 +612,7 @@
            <property name="font">
             <font>
              <family>黑体</family>
-             <pointsize>14</pointsize>
+             <pointsize>13</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -587,7 +628,7 @@
            <property name="font">
             <font>
              <family>黑体</family>
-             <pointsize>13</pointsize>
+             <pointsize>10</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -634,10 +675,10 @@
           <bool>true</bool>
          </attribute>
          <attribute name="headerCascadingSectionResizes">
-          <bool>false</bool>
+          <bool>true</bool>
          </attribute>
          <attribute name="headerHighlightSections">
-          <bool>false</bool>
+          <bool>true</bool>
          </attribute>
          <attribute name="headerShowSortIndicator" stdset="0">
           <bool>true</bool>
@@ -701,7 +742,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_9" stretch="10,6">
+    <layout class="QVBoxLayout" name="verticalLayout_9" stretch="10,12">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_7" stretch="1,10,1">
        <item>
@@ -711,7 +752,7 @@
            <property name="font">
             <font>
              <family>黑体</family>
-             <pointsize>14</pointsize>
+             <pointsize>13</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -1001,7 +1042,7 @@ background-color: rgb(243, 246, 248);</string>
            <property name="font">
             <font>
              <family>黑体</family>
-             <pointsize>14</pointsize>
+             <pointsize>13</pointsize>
             </font>
            </property>
            <property name="styleSheet">
@@ -1013,17 +1054,17 @@ background-color: rgb(243, 246, 248);</string>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btn_update">
-           <property name="font">
-            <font>
-             <family>黑体</family>
-             <pointsize>16</pointsize>
-            </font>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
-           <property name="text">
-            <string>更新</string>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
            </property>
-          </widget>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -1040,20 +1081,14 @@ background-color: rgb(243, 246, 248);</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:10pt; font-weight:600; color:#424242;&quot;&gt;2020-02-10 13:21:29&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:9pt; color:#8c8c8c;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-weight:600;&quot;&gt;·上海新增4例新冠肺炎确诊病例&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:10pt; color:#6c6c6c;&quot;&gt;   今日0-12时，上海新增新型冠状病毒感染的肺炎确诊病例4例，均为本市常住人口；全市累计确诊299例。&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-size:9pt; color:#6c6c6c;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:10pt; font-weight:600; color:#000000;&quot;&gt;信息来源:&lt;/span&gt;&lt;a href=&quot;https://view.inews.qq.com/a/20200210A0B3GH00&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:600; text-decoration: underline; color:#0000ff;&quot;&gt;健康上海&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_14">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="btn_rumor">
            <property name="font">
             <font>
              <family>黑体</family>
@@ -1066,7 +1101,7 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="btn_update">
            <property name="font">
             <font>
              <family>黑体</family>
@@ -1074,7 +1109,7 @@ p, li { white-space: pre-wrap; }
             </font>
            </property>
            <property name="text">
-            <string>检查更新</string>
+            <string>更新</string>
            </property>
           </widget>
          </item>
@@ -1088,6 +1123,22 @@ p, li { white-space: pre-wrap; }
            </property>
            <property name="text">
             <string>关于</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_chkUpdate">
+           <property name="font">
+            <font>
+             <family>黑体</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>检查更新</string>
            </property>
           </widget>
          </item>

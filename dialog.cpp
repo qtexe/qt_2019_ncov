@@ -36,8 +36,6 @@ Dialog::Dialog(QWidget *parent) :
 
     wigetAddGraph(ui->widget_chart);
 
-//    widgetInit(ui->widget_chart, QColor(33, 144, 5), QColor(135, 135, 139)); //累计治愈/死亡
-
     QTimer *timer = new QTimer(this);
 
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -45,7 +43,7 @@ Dialog::Dialog(QWidget *parent) :
 //    treeAddData();
 
     ui->tb_news->setOpenLinks(false);
-    connect(ui->tb_news, SIGNAL(anchorClicked(const QUrl&)),this, SLOT(anchorClickedSlot(const QUrl&)));
+    connect(ui->tb_news, SIGNAL(anchorClicked(const QUrl&)), this, SLOT(anchorClickedSlot(const QUrl&)));
 
     ui->btn_group->setId(ui->btn_line_0, 0);
     ui->btn_group->setId(ui->btn_line_1, 1);
@@ -55,10 +53,6 @@ Dialog::Dialog(QWidget *parent) :
 //    ui->rb0_add->setCheckable(true);
 }
 
-void Dialog::anchorClickedSlot(const QUrl& url)
-{
-    ShellExecuteA(NULL, "open", url.toString().toStdString().c_str(), "", "", SW_SHOW);
-}
 
 Dialog::~Dialog()
 {
@@ -68,41 +62,41 @@ Dialog::~Dialog()
 
 void Dialog::on_btn_update_clicked()
 {
-    qint64 timestamp = QDateTime::currentDateTime().toMSecsSinceEpoch(); //毫秒级
-    QString current_time =  QDateTime::currentDateTime().toString("yyyyMMdd_hh_mm_ss_zzz");
-
-    QString timestamp_str;
-    timestamp_str.setNum(timestamp, 10);
-    disInfo("开始更新");
-    //包括累计和各省市具体数据
-//    url = QUrl(dataApi + timestamp_str);
-    url = QUrl("https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5");
-    //只包含全国累计数据
-//    url = QUrl("https://ncov-api.werty.cn:2021/latest/tx/");
-    qDebug() << url.toString();
-    filename = current_time + ".json";
-    file = new QFile(filename);
-
-    if(!file->open(QIODevice::WriteOnly))
-    {
-//        qDebug() << "文件打开失败";
-        delete file;
-        file = 0;
-        return;
-    }
+    qDebug() << isNetWorkOnline();
     if(isNetWorkOnline() == true)
     {
-        disInfo("网络正常");
-//        qDebug() << "网络正常";
-        reply = manager->get(QNetworkRequest(url));     //发送get请求数据
-        //下载完成执行槽函数
-        connect(reply,SIGNAL(finished()),this,SLOT(httpFinished()));
-        //有可用的数据
-        connect(reply,SIGNAL(readyRead()),this,SLOT(httpReadyRead()));
+    //    ui->btn_update->setEnabled(false);
+        qint64 timestamp = QDateTime::currentDateTime().toMSecsSinceEpoch(); //毫秒级
+        QString current_time =  QDateTime::currentDateTime().toString("yyyyMMdd_hh_mm_ss_zzz");
+
+        QString timestamp_str;
+        timestamp_str.setNum(timestamp, 10);
+        //包括累计和各省市具体数据
+    //    url = QUrl(dataApi + timestamp_str);
+        url = QUrl("https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5");
+        //只包含全国累计数据
+    //    url = QUrl("https://ncov-api.werty.cn:2021/latest/tx/");
+        qDebug() << url.toString();
+        filename = "data_" +current_time + ".json";
+        file = new QFile(filename);
+
+        if(!file->open(QIODevice::WriteOnly))
+        {
+    //        qDebug() << "文件打开失败";
+            delete file;
+            file = 0;
+            return;
+        }
+
+    //        qDebug() << "网络正常";
+            reply = manager->get(QNetworkRequest(url));     //发送get请求数据
+            //下载完成执行槽函数
+            connect(reply,SIGNAL(finished()),this,SLOT(httpFinished()));
+            //有可用的数据
+            connect(reply,SIGNAL(readyRead()),this,SLOT(httpReadyRead()));
     }
     else
     {
-        disInfo("网络错误");
         qDebug() << "网络错误，请检查网络";
         QMessageBox::warning(NULL, "错误", "无网络连接，请检查网络", QMessageBox::Yes);
     }
@@ -142,9 +136,36 @@ double Dialog::getMaxVaule(QVector<double> dub1, QVector<double> dub2)
     return max;
 }
 
-
 void Dialog::on_btn_about_clicked()
 {
-    this->ab_win.setWindowTitle("关于");
     this->ab_win.exec();
+}
+
+void Dialog::on_btn_rumor_clicked()
+{
+//    this->rm_win.show();
+    qDebug() << isNetWorkOnline();
+    if(isNetWorkOnline() == true)
+    {
+        this->rm_win.getRumorNews(0);   //当天
+    //    this->rm_win.getRumorNews(1); //昨天
+    //    this->rm_win.getRumorNews(2); //前天
+        this->rm_win.exec();
+    }
+    else
+    {
+        QMessageBox::warning(NULL, "错误", "无网络连接，请检查网络", QMessageBox::Yes);
+    }
+}
+
+void Dialog::on_btn_chkUpdate_clicked()
+{
+    QString refUrl = "http://www.wangchaochao.top/2019/03/31/Qt-Update/";
+    QString refTitle = "Qt实现软件自动更新的一种简单方法";
+    int ret = QMessageBox::information(this, "检查更新", "更新功能暂未添加，可参考以下文章:\n" + refTitle, "去看看", "不去了");
+
+    if(ret == 0)
+    {
+        QDesktopServices::openUrl(QUrl(refUrl));
+    }
 }

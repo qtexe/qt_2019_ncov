@@ -4,7 +4,7 @@ void Dialog::update()
 {
     static uint16_t cnt = 0;
     cnt++;
-    if(cnt == 60)   //60s = 1min
+    if(cnt == 60 * updateTime)   //60s = 1min
     {
         qDebug() << "开始更新";
         emit on_btn_update_clicked();//触发更新
@@ -31,7 +31,7 @@ int Dialog::readFromFile(QString filename)
     QByteArray allData = file.readAll();
     file.close();
     dataParse(allData);
-//    file.remove();            //删除文件
+    file.remove();            //删除文件
     return 0;
 }
 void Dialog::httpReadyRead()   //有可用数据

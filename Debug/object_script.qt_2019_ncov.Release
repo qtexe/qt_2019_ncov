@@ -7,8 +7,10 @@ INPUT(
 ./release\plot.o
 ./release\slots.o
 ./release\about.o
+./release\rumor.o
 ./release\qrc_img.o
 ./release\moc_dialog.o
 ./release\moc_qcustomplot.o
 ./release\moc_about.o
+./release\moc_rumor.o
 );

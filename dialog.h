@@ -6,7 +6,6 @@
 #include <QFile>
 
 //网络相关头文件
-
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
@@ -16,11 +15,13 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+
 #include <QTreeWidgetItem>
 #include "qjsonvalue.h"
 
 #include "qcustomplot.h"
 #include "about.h"
+#include "rumor.h"
 
 namespace Ui {
 class Dialog;
@@ -66,7 +67,6 @@ public:
     QString rgbToStyle(QColor rbg);
     void setSelectStyle(int id);
 
-
 private slots:
     void on_btn_update_clicked();
     void httpReadyRead();   //有可用数据
@@ -82,6 +82,10 @@ private slots:
 
     void on_btn_about_clicked();
     void closeEvent(QCloseEvent *win);
+    void on_btn_rumor_clicked();
+
+    void on_btn_chkUpdate_clicked();
+
 private:
     Ui::Dialog *ui;
 
@@ -98,9 +102,11 @@ private:
     //网易api,目前还没新闻，和腾讯非常相似
 //    QString dataApi = "https://c.m.163.com/ug/api/wuhan/app/data/list-total?t=";
 //    QString newsApi = "http://api.tianapi.com/txapi/ncov/index?key=964dc226dd5b57e892e6199735b6c55f";
-    QString rumorApi = "https://vp.fact.qq.com/loadmore?page=0&_=1581341095686";
     bool dataFlag = true;   //true:data, false:news
     int clickId = 0;
+    uint8_t updateTime = 5;     //默认5分钟更新一次
+    QString newsHtmlFileName = "html_news.txt";
+
     QColor clr1_1 = QColor(0, 93, 255);
     QColor clr1_2 = QColor(237, 160, 70);
 
@@ -130,6 +136,7 @@ private:
     QVector<QString> RateDate;  //从1.20日开始
 
     about ab_win;
+    rumor rm_win;
 };
 
 class ncovPerson

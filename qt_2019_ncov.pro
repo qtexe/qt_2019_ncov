@@ -30,14 +30,17 @@ SOURCES += main.cpp\
     network.cpp \
     plot.cpp \
     slots.cpp \
-    about.cpp
+    about.cpp \
+    rumor.cpp
 
 HEADERS  += dialog.h \
     qcustomplot.h \
-    about.h
+    about.h \
+    rumor.h
 
 FORMS    += dialog.ui \
-    about.ui
+    about.ui \
+    rumor.ui
 
 
 QT += network
@@ -47,7 +50,6 @@ RESOURCES += \
     img.qrc
 
 # 添加图标
-RC_ICONS = virus.ico
+RC_ICONS = bitbug_favicon.ico
 
-
-CONFIG -= debug_and_release
+#CONFIG -= debug_and_release
