@@ -15,15 +15,15 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_rumor
 {
 public:
-    QLabel *label;
+    QVBoxLayout *verticalLayout;
     QTextBrowser *tb_rumor;
 
     void setupUi(QDialog *rumor)
@@ -31,19 +31,19 @@ public:
         if (rumor->objectName().isEmpty())
             rumor->setObjectName(QStringLiteral("rumor"));
         rumor->resize(664, 433);
-        label = new QLabel(rumor);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(10, 20, 161, 31));
         QFont font;
-        font.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
-        font.setPointSize(12);
-        label->setFont(font);
+        font.setFamily(QStringLiteral("Ubuntu"));
+        rumor->setFont(font);
+        verticalLayout = new QVBoxLayout(rumor);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         tb_rumor = new QTextBrowser(rumor);
         tb_rumor->setObjectName(QStringLiteral("tb_rumor"));
-        tb_rumor->setGeometry(QRect(20, 70, 611, 351));
         QFont font1;
         font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
         tb_rumor->setFont(font1);
+
+        verticalLayout->addWidget(tb_rumor);
+
 
         retranslateUi(rumor);
 
@@ -53,12 +53,11 @@ public:
     void retranslateUi(QDialog *rumor)
     {
         rumor->setWindowTitle(QApplication::translate("rumor", "Dialog", Q_NULLPTR));
-        label->setText(QApplication::translate("rumor", "\350\276\237\350\260\243\344\277\241\346\201\257", Q_NULLPTR));
         tb_rumor->setHtml(QApplication::translate("rumor", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'\345\276\256\350\275\257\351\233\205\351\273\221'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", Q_NULLPTR));
+"</style></head><body style=\" font-family:'\345\276\256\350\275\257\351\233\205\351\273\221'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;\"><br /></p></body></html>", Q_NULLPTR));
     } // retranslateUi
 
 };

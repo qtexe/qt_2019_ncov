@@ -6,12 +6,11 @@ int Dialog::dataParse(QByteArray str)
 {
     QJsonParseError err_rpt;
     QJsonDocument root_Doc = QJsonDocument::fromJson(str, &err_rpt);
-
+//    qDebug() << "ok ";
     if(err_rpt.error != QJsonParseError::NoError)
     {
         file->remove();
         emit on_btn_update_clicked();
-
         qDebug() << "JSON格式错误";
 //        return -1;
     }
@@ -38,20 +37,24 @@ int Dialog::dataParse(QByteArray str)
 
             QJsonArray areaTree_obj = data_obj.value("areaTree").toArray();
             QJsonObject chinaTree_obj = areaTree_obj.at(0).toObject();     //第0个是中国
-
+//            qDebug() << "chinaTree";
             chinaTreeParse(chinaTree_obj);
+//            qDebug() << "conutryTree";
             countryTreeParse(areaTree_obj);
 
             QJsonArray chinaDayListObj = data_obj.value("chinaDayList").toArray();
+//            qDebug() << "chinaDayList";
             chinaDayListParse(chinaDayListObj);
 
             QJsonArray chinaDayAddListObj = data_obj.value("chinaDayAddList").toArray();
+//            qDebug() << "chinaDayAddList";
             chinaDayAddListParse(chinaDayAddListObj);
 
             //新闻解析
             QJsonArray articleArr = data_obj.value("articleList").toArray();
+//            qDebug() << "article";
             articleParse(articleArr);
-
+//            qDebug() << "article ok";
             disInfo("更新成功");
             connect(ui->widget_chart, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(widget_chart_event(QMouseEvent*)));
 
@@ -60,11 +63,12 @@ int Dialog::dataParse(QByteArray str)
 
             //默认绘制
             setSelectStyle(0);
+//            qDebug() << "DrawLine";
             clickId = 0;     //修复当点击死亡率按钮之后，再更新按钮，此时tip单位还是%的BUG
             widgetDrawLine(ui->widget_chart, "新增疑似/确诊趋势", "新增确诊", "新增疑似",
                 clr1_1, clr1_2, AddDate, AddConfirmDub, AddSuspectDub);
         }
-        qDebug() << "更新成功";
+        qDebug() << "疫情数据更新成功";
 //        ui->btn_update->setEnabled(true);
     }
     else
@@ -301,7 +305,7 @@ void Dialog::articleParse(QJsonArray arr)
     {
         qDebug() << "文件打开失败";
     }
-
+//    qDebug() << "file open ok";
     QByteArray allData = file.readAll();
     file.close();
     QList<QByteArray> ba;
@@ -330,6 +334,7 @@ void Dialog::articleParse(QJsonArray arr)
 //    qDebug() << html;
     ui->tb_news->clear();
     ui->tb_news->setHtml(html);
+//    qDebug() << "set Html ok";
 }
 //获取人数
 int Dialog::getNum(QJsonObject obj, int *num_confirm, int *num_suspect, int *num_dead, int *num_heal)

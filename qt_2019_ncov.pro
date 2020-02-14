@@ -31,16 +31,19 @@ SOURCES += main.cpp\
     plot.cpp \
     slots.cpp \
     about.cpp \
-    rumor.cpp
+    rumor.cpp \
+    rumor_info.cpp
 
 HEADERS  += dialog.h \
     qcustomplot.h \
     about.h \
-    rumor.h
+    rumor.h \
+    rumor_info.h
 
 FORMS    += dialog.ui \
     about.ui \
-    rumor.ui
+    rumor.ui \
+    rumor_info.ui
 
 
 QT += network

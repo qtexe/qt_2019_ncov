@@ -1,6 +1,7 @@
 ﻿#include "about.h"
 #include "ui_about.h"
-#include "windows.h"
+//#include "windows.h"
+#include <QDesktopServices>
 
 about::about(QWidget *parent) :
     QDialog(parent),
@@ -20,5 +21,6 @@ about::~about()
 }
 void about::anchorClickedSlot(const QUrl& url)
 {
-    ShellExecuteA(NULL, "open", url.toString().toStdString().c_str(), "", "", SW_SHOW);
+    QDesktopServices::openUrl(url);
+//    ShellExecuteA(NULL, "open", url.toString().toStdString().c_str(), "", "", SW_SHOW);
 }

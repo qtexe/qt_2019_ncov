@@ -98,19 +98,20 @@ public:
     QVBoxLayout *verticalLayout_8;
     QHBoxLayout *horizontalLayout_11;
     QLabel *label_30;
-    QPushButton *btn_update;
+    QSpacerItem *horizontalSpacer_6;
     QTextBrowser *tb_news;
     QHBoxLayout *horizontalLayout_14;
     QPushButton *btn_rumor;
-    QPushButton *pushButton_3;
+    QPushButton *btn_update;
     QPushButton *btn_about;
+    QPushButton *btn_chkUpdate;
     QButtonGroup *btn_group;
 
     void setupUi(QDialog *Dialog)
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QStringLiteral("Dialog"));
-        Dialog->resize(1146, 693);
+        Dialog->resize(1130, 645);
         QFont font;
         font.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
         font.setPointSize(14);
@@ -405,10 +406,7 @@ public:
 
         label_33 = new QLabel(Dialog);
         label_33->setObjectName(QStringLiteral("label_33"));
-        QFont font7;
-        font7.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
-        font7.setPointSize(9);
-        label_33->setFont(font7);
+        label_33->setFont(font2);
         label_33->setStyleSheet(QStringLiteral(""));
 
         horizontalLayout_10->addWidget(label_33);
@@ -421,17 +419,17 @@ public:
         verticalLayout_6->addLayout(horizontalLayout_10);
 
         tree = new QTreeWidget(Dialog);
-        QFont font8;
-        font8.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
-        font8.setPointSize(12);
-        font8.setBold(true);
-        font8.setWeight(75);
+        QFont font7;
+        font7.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        font7.setPointSize(12);
+        font7.setBold(true);
+        font7.setWeight(75);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
-        __qtreewidgetitem->setFont(4, font8);
-        __qtreewidgetitem->setFont(3, font8);
-        __qtreewidgetitem->setFont(2, font8);
-        __qtreewidgetitem->setFont(1, font8);
-        __qtreewidgetitem->setFont(0, font8);
+        __qtreewidgetitem->setFont(4, font7);
+        __qtreewidgetitem->setFont(3, font7);
+        __qtreewidgetitem->setFont(2, font7);
+        __qtreewidgetitem->setFont(1, font7);
+        __qtreewidgetitem->setFont(0, font7);
         tree->setHeaderItem(__qtreewidgetitem);
         tree->setObjectName(QStringLiteral("tree"));
         tree->setFont(font1);
@@ -457,7 +455,7 @@ public:
 
         lbe_countryTotal = new QLabel(Dialog);
         lbe_countryTotal->setObjectName(QStringLiteral("lbe_countryTotal"));
-        lbe_countryTotal->setFont(font6);
+        lbe_countryTotal->setFont(font2);
         lbe_countryTotal->setStyleSheet(QStringLiteral(""));
 
         horizontalLayout_9->addWidget(lbe_countryTotal);
@@ -471,10 +469,10 @@ public:
 
         tree_2 = new QTreeWidget(Dialog);
         QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem();
-        __qtreewidgetitem1->setFont(3, font8);
-        __qtreewidgetitem1->setFont(2, font8);
-        __qtreewidgetitem1->setFont(1, font8);
-        __qtreewidgetitem1->setFont(0, font8);
+        __qtreewidgetitem1->setFont(3, font7);
+        __qtreewidgetitem1->setFont(2, font7);
+        __qtreewidgetitem1->setFont(1, font7);
+        __qtreewidgetitem1->setFont(0, font7);
         tree_2->setHeaderItem(__qtreewidgetitem1);
         tree_2->setObjectName(QStringLiteral("tree_2"));
         tree_2->setFont(font1);
@@ -482,8 +480,8 @@ public:
         tree_2->setLineWidth(2);
         tree_2->setSortingEnabled(true);
         tree_2->header()->setVisible(true);
-        tree_2->header()->setCascadingSectionResizes(false);
-        tree_2->header()->setHighlightSections(false);
+        tree_2->header()->setCascadingSectionResizes(true);
+        tree_2->header()->setHighlightSections(true);
         tree_2->header()->setProperty("showSortIndicator", QVariant(true));
 
         verticalLayout_6->addWidget(tree_2);
@@ -666,21 +664,19 @@ public:
 
         horizontalLayout_11->addWidget(label_30);
 
-        btn_update = new QPushButton(Dialog);
-        btn_update->setObjectName(QStringLiteral("btn_update"));
-        btn_update->setFont(font3);
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_11->addWidget(btn_update);
+        horizontalLayout_11->addItem(horizontalSpacer_6);
 
 
         verticalLayout_8->addLayout(horizontalLayout_11);
 
         tb_news = new QTextBrowser(Dialog);
         tb_news->setObjectName(QStringLiteral("tb_news"));
-        QFont font9;
-        font9.setFamily(QStringLiteral("Microsoft YaHei"));
-        font9.setPointSize(12);
-        tb_news->setFont(font9);
+        QFont font8;
+        font8.setFamily(QStringLiteral("Microsoft YaHei"));
+        font8.setPointSize(12);
+        tb_news->setFont(font8);
 
         verticalLayout_8->addWidget(tb_news);
 
@@ -693,17 +689,24 @@ public:
 
         horizontalLayout_14->addWidget(btn_rumor);
 
-        pushButton_3 = new QPushButton(Dialog);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setFont(font1);
+        btn_update = new QPushButton(Dialog);
+        btn_update->setObjectName(QStringLiteral("btn_update"));
+        btn_update->setFont(font1);
 
-        horizontalLayout_14->addWidget(pushButton_3);
+        horizontalLayout_14->addWidget(btn_update);
 
         btn_about = new QPushButton(Dialog);
         btn_about->setObjectName(QStringLiteral("btn_about"));
         btn_about->setFont(font1);
 
         horizontalLayout_14->addWidget(btn_about);
+
+        btn_chkUpdate = new QPushButton(Dialog);
+        btn_chkUpdate->setObjectName(QStringLiteral("btn_chkUpdate"));
+        btn_chkUpdate->setFont(font1);
+        btn_chkUpdate->setStyleSheet(QStringLiteral(""));
+
+        horizontalLayout_14->addWidget(btn_chkUpdate);
 
 
         verticalLayout_8->addLayout(horizontalLayout_14);
@@ -775,15 +778,15 @@ public:
         btn_line_3->setText(QApplication::translate("Dialog", "\346\262\273\346\204\210\347\216\207\n"
 "\347\227\205\346\255\273\347\216\207", Q_NULLPTR));
         label_30->setText(QApplication::translate("Dialog", "\346\234\200\346\226\260\345\212\250\346\200\201", Q_NULLPTR));
-        btn_update->setText(QApplication::translate("Dialog", "\346\233\264\346\226\260", Q_NULLPTR));
         tb_news->setHtml(QApplication::translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Microsoft YaHei'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", Q_NULLPTR));
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", Q_NULLPTR));
         btn_rumor->setText(QApplication::translate("Dialog", "\350\276\237\350\260\243\344\277\241\346\201\257", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("Dialog", "\346\243\200\346\237\245\346\233\264\346\226\260", Q_NULLPTR));
+        btn_update->setText(QApplication::translate("Dialog", "\346\233\264\346\226\260", Q_NULLPTR));
         btn_about->setText(QApplication::translate("Dialog", "\345\205\263\344\272\216", Q_NULLPTR));
+        btn_chkUpdate->setText(QApplication::translate("Dialog", "\346\243\200\346\237\245\346\233\264\346\226\260", Q_NULLPTR));
     } // retranslateUi
 
 };

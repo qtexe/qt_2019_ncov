@@ -10,6 +10,7 @@
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
 #include <QtNetwork/QNetworkConfigurationManager>
+#include <QDesktopServices>
 
 //JSON相关头文件
 #include <QJsonDocument>
@@ -72,9 +73,6 @@ private slots:
     void httpReadyRead();   //有可用数据
     void httpFinished();  //完成下载
 //    void updateDataReadProgress(qint64 bytesRead, qint64 totalBytes);
-    void widget_1_event(QMouseEvent*);
-    void widget_2_event(QMouseEvent*);
-    void widget_3_event(QMouseEvent*);
     void widget_chart_event(QMouseEvent*);
     void update();
     void anchorClickedSlot(const QUrl& url);
@@ -94,9 +92,9 @@ private:
     QUrl url;
     QFile *file;
     QString filename;
-
+    QString verison = "v1.1";
     //腾讯,最新接口有新闻,添加了病死率和治愈率
-    QString dataApi = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&_=";     //时间戳可以不添加
+    QString dataApi = "http://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&_=";     //时间戳可以不添加
     //2020_02_10:添加最新动态新闻键值，大小116KB
 
     //网易api,目前还没新闻，和腾讯非常相似

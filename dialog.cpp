@@ -1,6 +1,7 @@
 ﻿#include "dialog.h"
 #include "ui_dialog.h"
-#include <windows.h>
+//#include <windows.h>
+//#include <qt_windows.h>
 
 #include <QMessageBox>
 #include <QDebug>
@@ -30,7 +31,7 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->setWindowTitle("2019_nCoV冠状病毒感染疫情实时监控_v1.0");
+    this->setWindowTitle("2019_nCoV冠状病毒感染疫情实时监控_" + verison);
     manager = new QNetworkAccessManager(this);          //新建网络请求对象
     emit on_btn_update_clicked();
 
@@ -62,7 +63,7 @@ Dialog::~Dialog()
 
 void Dialog::on_btn_update_clicked()
 {
-    qDebug() << isNetWorkOnline();
+//    qDebug() << isNetWorkOnline();
     if(isNetWorkOnline() == true)
     {
     //    ui->btn_update->setEnabled(false);
@@ -76,7 +77,8 @@ void Dialog::on_btn_update_clicked()
         url = QUrl("https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5");
         //只包含全国累计数据
     //    url = QUrl("https://ncov-api.werty.cn:2021/latest/tx/");
-        qDebug() << url.toString();
+//        qDebug() << url.toString();
+        qDebug() << "网络正常,开始更新疫情数据" + url.toString();
         filename = "data_" +current_time + ".json";
         file = new QFile(filename);
 
@@ -144,7 +146,7 @@ void Dialog::on_btn_about_clicked()
 void Dialog::on_btn_rumor_clicked()
 {
 //    this->rm_win.show();
-    qDebug() << isNetWorkOnline();
+//    qDebug() << isNetWorkOnline();
     if(isNetWorkOnline() == true)
     {
         this->rm_win.getRumorNews(0);   //当天

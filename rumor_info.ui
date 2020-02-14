@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>rumor_info</class>
+ <widget class="QDialog" name="rumor_info">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>634</width>
+    <height>345</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTextBrowser" name="tb_rumor_info">
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:16pt; font-weight:600;&quot;&gt;天气暖和从南方回归北方的鸟会带回病毒，感染人类&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:6pt; font-weight:600;&quot;&gt;  &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:14pt; color:#555753;&quot;&gt;&amp;quot;流传说法：天气回暖，从南方飞回北方的鸟经过疫区会带回病毒，感染人类。&amp;quot;&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:14pt; font-weight:600;&quot;&gt;较真鉴定：&lt;/span&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:14pt; color:#ffffff; background-color:#484848;&quot;&gt; [疑]有失实 &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;查证要点：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:15pt; color:#ffffff; background-color:#333333;&quot;&gt;  1  &lt;/span&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:14pt; color:#000000;&quot;&gt; 冠状病毒是一类主要引起呼吸道、肠道疾病的病原体。除了可感染人类，还可感染猪、牛、猫、犬、骆驼、蝙蝠、老鼠、刺猬等多种哺乳动物以及多种鸟类。鸟类作为宿主之一，其会感染SARS病毒或MERS病毒已被证实。本次新型冠状病毒跟SARS属于一个族，鸟类感染可能不表现症状，但如果人接触或食用携带病毒鸟类，会被感染并引起症状。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:15pt; color:#ffffff; background-color:#333333;&quot;&gt;  2  &lt;/span&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:14pt; color:#000000;&quot;&gt; 所以天气回暖，北飞的鸟可能携带病毒，但这并不意味着什么。因为若没有本次疫情，鸟类也会携带病毒，人类与这些野生动物相安无事，被感染的概率很低；另外，北方城市比如黑龙江、北京等均有数百确诊病例，病毒在全国扩散是既定事实，只要我们做好基础防护，不吃野生动物，疫情不会因为鸟类到来而加重。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:7pt; color:#000000;&quot;&gt;  &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;查证者：&lt;/span&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:14pt; color:#000000;&quot;&gt;谢望时  &lt;/span&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:14pt; color:#8d8d8d;&quot;&gt;药理学硕士，知贝儿科药师&lt;/span&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;时间&lt;/span&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:12pt; color:#000000;&quot;&gt;：2020-02-13　&lt;/span&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:12pt; font-weight:600; color:#000000;&quot;&gt;来源&lt;/span&gt;&lt;span style=&quot; font-family:'微软雅黑'; font-size:12pt; color:#000000;&quot;&gt;：腾讯较真&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_back">
+       <property name="font">
+        <font>
+         <family>黑体</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>返回</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

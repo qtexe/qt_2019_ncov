@@ -9,11 +9,15 @@
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
 #include <QtNetwork/QNetworkConfigurationManager>
+#include <QDesktopServices>
+
 
 //JSON相关头文件
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+
+#include "rumor_info.h"
 
 namespace Ui {
 class rumor;
@@ -54,7 +58,7 @@ private:
     QFile *file;
     QString filename;
 //    QString html;
-
+    rumor_info info;
 };
 
 #endif // RUMOR_H

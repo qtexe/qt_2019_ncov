@@ -1,6 +1,6 @@
 ﻿#include "rumor.h"
 #include "ui_rumor.h"
-#include "windows.h"
+//#include "windows.h"
 #include <QMessageBox>
 
 rumor::rumor(QWidget *parent) :
@@ -11,6 +11,7 @@ rumor::rumor(QWidget *parent) :
 
     this->setWindowTitle("辟谣信息");
     ui->tb_rumor->setOpenLinks(false);
+//    ui->tb_rumor->setOpenLinks(true);
     connect(ui->tb_rumor, SIGNAL(anchorClicked(const QUrl&)), this, SLOT(anchorClickedSlot(const QUrl&)));
     manager = new QNetworkAccessManager(this);          //新建网络请求对象
 }
@@ -22,7 +23,25 @@ rumor::~rumor()
 
 void rumor::anchorClickedSlot(const QUrl& url)
 {
-    ShellExecuteA(NULL, "open", url.toString().toStdString().c_str(), "", "", SW_SHOW);
+//    qDebug() << url;
+    QString url_str = url.toString();
+
+    if(url_str == "https://vp.fact.qq.com/home")
+        QDesktopServices::openUrl(url);
+    else
+    {
+        QNetworkConfigurationManager mgr;
+        if(mgr.isOnline() == true)
+        {
+            QList<QString> list = url_str.split('=');
+    //        qDebug() << list[0] << list[1];
+            info.getRumorInfo(list[1]);
+    //    ShellExecuteA(NULL, "open", url.toString().toStdString().c_str(), "", "", SW_SHOW);
+            info.exec();
+        }
+        else
+            QMessageBox::warning(NULL, "错误", "无网络连接，请检查网络", QMessageBox::Yes);
+    }
 }
 void rumor::httpReadyRead()   //有可用数据
 {
@@ -33,7 +52,7 @@ void rumor::httpFinished()  //完成下载
 {
     file->flush();
     file->close();
-    qDebug() << "rumor数据下载成功";
+//    qDebug() << "rumor数据下载成功";
     reply->deleteLater();
     reply = 0;
     delete file;
@@ -44,7 +63,7 @@ void rumor::httpFinished()  //完成下载
 
 void rumor::parseRumor(QString filename)
 {
-    qDebug() << "开始解析rumor数据:" << filename;
+//    qDebug() << "开始解析rumor数据:" << filename;
     QFile file(filename);
     if(!file.open(QIODevice::ReadOnly))
     {
@@ -63,7 +82,7 @@ void rumor::parseRumor(QString filename)
         qDebug() << "JSON格式错误";
 //        return -1;
     }
-    qDebug() << "JSON格式正确";
+//    qDebug() << "JSON格式正确";
     if(root_Doc.isObject())
     {
         QJsonObject root_obj = root_Doc.object();
@@ -91,7 +110,8 @@ void rumor::getRumorNews(uint8_t page)      //获取几页
         QString current_time =  QDateTime::currentDateTime().toString("yyyyMMdd_hh_mm_ss_zzz");
         QString pageStr = QString::number(page);
         url = QUrl(rumorApi + pageStr);
-        qDebug() << url.toString();
+//        qDebug() << url.toString();
+        qDebug() << "网络正常,开始更新辟谣信息" + url.toString();
 
         filename = "rumorNews_" + pageStr + "_" + current_time + ".json";
         file = new QFile(filename);
@@ -104,22 +124,18 @@ void rumor::getRumorNews(uint8_t page)      //获取几页
             return;
         }
 
-        qDebug() << "rumorApi网络正常";
+//        qDebug() << "rumorApi网络正常";
         reply = manager->get(QNetworkRequest(url));     //发送get请求数据
         //下载完成执行槽函数
         connect(reply,SIGNAL(finished()),this,SLOT(httpFinished()));
         //有可用的数据
         connect(reply,SIGNAL(readyRead()),this,SLOT(httpReadyRead()));
-//      page++;
     }
     else
     {
         qDebug() << "rumorApi网络错误，请检查网络";
         QMessageBox::warning(NULL, "错误", "无网络连接，请检查网络", QMessageBox::Yes);
     }
-//    }
-//    ui->tb_rumor->setHtml(html);
-
 }
 
 //假,谣言,url,"谣言标题", 腾讯医典, id
@@ -138,7 +154,7 @@ void rumor::disRumorNews(QJsonArray content_arr)
     file.close();
     ba = allData.split('*');
 
-    qDebug() << ba.size();
+//    qDebug() << ba.size();
 
     QString html;
     uint8_t arrSize = content_arr.size();
@@ -171,4 +187,5 @@ void rumor::disRumorNews(QJsonArray content_arr)
 //    qDebug() << html;
     ui->tb_rumor->clear();
     ui->tb_rumor->setHtml(html);
+    qDebug() << "辟谣信息更新成功";
 }

@@ -18,7 +18,7 @@ bool Dialog::isNetWorkOnline()
 }
 int Dialog::readFromFile(QString filename)
 {
-    disInfo("开始解析数据");
+//    qDebug() << "开始解析数据";
 //    qDebug() << filename;
     QFile file(filename);
 //    QFile file("20200205_12_29_53_290.json");   //string

@@ -3,7 +3,8 @@
 
 void Dialog::anchorClickedSlot(const QUrl& url)
 {
-    ShellExecuteA(NULL, "open", url.toString().toStdString().c_str(), "", "", SW_SHOW);
+    QDesktopServices::openUrl(url);
+//    ShellExecuteA(NULL, "open", url.toString().toStdString().c_str(), "", "", SW_SHOW);
 }
 void Dialog::closeEvent(QCloseEvent *win)
 {
@@ -62,21 +63,6 @@ void Dialog::disTip(QMouseEvent *event, QCustomPlot *widget, QVector<QString> da
         }
         QToolTip::showText(cursor().pos(), strToolTip, widget);
     }
-}
-
-void Dialog::widget_1_event(QMouseEvent *event)
-{
-//    disTip(event, ui->widget_1, AddDate);
-}
-
-void Dialog::widget_2_event(QMouseEvent *event)
-{
-//    disTip(event, ui->widget_2, TotalDate);
-}
-
-void Dialog::widget_3_event(QMouseEvent *event)
-{
-//    disTip(event, ui->widget_3, TotalDate);
 }
 
 void Dialog::widget_chart_event(QMouseEvent *event)

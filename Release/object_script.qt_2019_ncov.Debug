@@ -8,9 +8,11 @@ INPUT(
 ./debug\slots.o
 ./debug\about.o
 ./debug\rumor.o
+./debug\rumor_info.o
 ./debug\qrc_img.o
 ./debug\moc_dialog.o
 ./debug\moc_qcustomplot.o
 ./debug\moc_about.o
 ./debug\moc_rumor.o
+./debug\moc_rumor_info.o
 );
