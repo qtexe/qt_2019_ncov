@@ -6,7 +6,7 @@
 
 我的博客文章:
 - [基于Qt的新冠肺炎疫情数据实时监控平台（开源小项目）](https://www.qtexe.com/post/2020-02-14-qt-ncov/)
-- [基于Qt的新冠肺炎疫情数据实时监控平台1.1版本](https://www.qtexe.com/post/2020-02-14-qt-ncov-2/)
+- [基于Qt的新冠肺炎疫情数据实时监控平台1.1版本](https://www.qtexe.com/post/2020-02-15-qt-ncov-2/)
 ### 版本历史
 
 [v1.0](https://github.com/qtexe/qt_2019_ncov/releases/tag/v1.0)
