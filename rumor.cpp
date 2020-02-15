@@ -142,7 +142,9 @@ void rumor::getRumorNews(uint8_t page)      //获取几页
 
 void rumor::disRumorNews(QJsonArray content_arr)
 {
-    QFile file(rumorHtmlFileName);
+    QString tmp = QCoreApplication::applicationDirPath() + "/" + rumorHtmlFileName;
+
+    QFile file(tmp);
 
     if(!file.open(QIODevice::ReadOnly))
     {

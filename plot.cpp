@@ -57,7 +57,7 @@ void Dialog::widgetDrawLine(QCustomPlot *widget, QString chartName, QString name
     widget->graph(0)->setPen(QPen(clr1));   //QColor(255, 100, 0)
     widget->graph(1)->setPen(QPen(clr2));   //QColor(50, 200, 0)
 
-    uint16_t maxValue = getMaxVaule(data1, data2);
+    double maxValue = getMaxVaule(data1, data2);
     uint16_t dataSize = data1.size();
 
     QVector<double> ticks;

@@ -69,8 +69,9 @@ void rumor_info::paraseRumorInfo(QString filename)
 void rumor_info::disRumorInfo(QJsonObject content_obj)
 {
     ui->tb_rumor_info->clear();
+    QString tmp = QCoreApplication::applicationDirPath() + "/" + rumorInfoHtmlFileName;
 
-    QFile file(rumorInfoHtmlFileName);
+    QFile file(tmp);
     if(!file.open(QIODevice::ReadOnly))
     {
         qDebug() << "rumor文件打开失败";

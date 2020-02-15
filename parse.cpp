@@ -299,7 +299,12 @@ void Dialog::articleParse(QJsonArray arr)
     uint16_t arrSize = arr.size();
 //    qDebug() << "共 " << arrSize << " 条新闻";
 
-    QFile file(newsHtmlFileName);
+//    qDebug() << QDir::current();
+//    qDebug() << QCoreApplication::applicationDirPath();
+//    qDebug() << QCoreApplication::applicationFilePath();
+//    qDebug() << QCoreApplication::applicationName();
+    QString tmp = QCoreApplication::applicationDirPath() + "/" + newsHtmlFileName;
+    QFile file(tmp);
 
     if(!file.open(QIODevice::ReadOnly))
     {
