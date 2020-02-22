@@ -1,6 +1,1 @@
-<RCC>
-    <qresource prefix="/">
-        <file>top_headv3.jpg</file>
-        <file>my_sub.jpg</file>
-    </qresource>
-</RCC>
+<RCC/>
