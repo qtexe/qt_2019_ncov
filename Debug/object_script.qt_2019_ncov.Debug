@@ -9,10 +9,12 @@ INPUT(
 ./debug\about.o
 ./debug\rumor.o
 ./debug\rumor_info.o
+./debug\news_info.o
 ./debug\qrc_img.o
 ./debug\moc_dialog.o
 ./debug\moc_qcustomplot.o
 ./debug\moc_about.o
 ./debug\moc_rumor.o
 ./debug\moc_rumor_info.o
+./debug\moc_news_info.o
 );

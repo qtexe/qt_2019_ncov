@@ -8,6 +8,8 @@ rumor_info::rumor_info(QWidget *parent) :
 {
     ui->setupUi(this);
     manager = new QNetworkAccessManager(this);          //新建网络请求对象
+
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     this->setWindowTitle("较真查证");
 }
 

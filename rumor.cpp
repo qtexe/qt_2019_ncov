@@ -9,6 +9,7 @@ rumor::rumor(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     this->setWindowTitle("辟谣信息");
     ui->tb_rumor->setOpenLinks(false);
 //    ui->tb_rumor->setOpenLinks(true);
@@ -27,16 +28,16 @@ void rumor::anchorClickedSlot(const QUrl& url)
     QString url_str = url.toString();
 
     if(url_str == "https://vp.fact.qq.com/home")
+    {
         QDesktopServices::openUrl(url);
+    }
     else
     {
         QNetworkConfigurationManager mgr;
         if(mgr.isOnline() == true)
         {
             QList<QString> list = url_str.split('=');
-    //        qDebug() << list[0] << list[1];
             info.getRumorInfo(list[1]);
-    //    ShellExecuteA(NULL, "open", url.toString().toStdString().c_str(), "", "", SW_SHOW);
             info.exec();
         }
         else

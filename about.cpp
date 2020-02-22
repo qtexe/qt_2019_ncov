@@ -2,6 +2,7 @@
 #include "ui_about.h"
 //#include "windows.h"
 #include <QDesktopServices>
+//#include <qt_windows.h>
 
 about::about(QWidget *parent) :
     QDialog(parent),
@@ -10,6 +11,7 @@ about::about(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowTitle("关于");
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
     ui->tb_about->setOpenLinks(false);
     connect(ui->tb_about, SIGNAL(anchorClicked(const QUrl&)), this, SLOT(anchorClickedSlot(const QUrl&)));

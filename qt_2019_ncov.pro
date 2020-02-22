@@ -32,27 +32,38 @@ SOURCES += main.cpp\
     slots.cpp \
     about.cpp \
     rumor.cpp \
-    rumor_info.cpp
+    rumor_info.cpp \
+    news_info.cpp
 
 HEADERS  += dialog.h \
     qcustomplot.h \
     about.h \
     rumor.h \
-    rumor_info.h
+    rumor_info.h \
+    news_info.h
 
 FORMS    += dialog.ui \
     about.ui \
     rumor.ui \
-    rumor_info.ui
+    rumor_info.ui \
+    news_info.ui
 
 
 QT += network
 QT += printsupport
+QT += axcontainer
 
 RESOURCES += \
     img.qrc
 
+#运行文件附带调试输出窗口
+#CONFIG += console pro
+
+# 程序版本
+#VERSION   	= 2018.7.25
+
 # 添加图标
 RC_ICONS = bitbug_favicon.ico
+#VERSION = 1.0.0.0 //设置程序版本号，可省略
 
 #CONFIG -= debug_and_release

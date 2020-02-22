@@ -7,8 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>1130</width>
-    <height>645</height>
+    <height>731</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1130</width>
+    <height>731</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1130</width>
+    <height>731</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -24,11 +36,11 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="2,1">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_10" stretch="1,60,0,100">
+    <layout class="QVBoxLayout" name="verticalLayout_10" stretch="1,60,0,0,100">
      <item>
       <widget class="QLabel" name="lbe_pic">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -36,14 +48,14 @@
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>194</height>
+         <height>118</height>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-image: url(:/top_headv3.jpg);</string>
+        <string notr="true">image: url(:/new_top.jpg);</string>
        </property>
        <property name="text">
-        <string/>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;http://www.cnblog.com/fron_csl&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;/&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -51,10 +63,13 @@
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
+       <property name="openExternalLinks">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="4,0,10">
+      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="4,0,0">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_8">
          <item>
@@ -114,340 +129,569 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <property name="spacing">
+          <number>5</number>
+         </property>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <item>
-              <widget class="QLabel" name="label_8">
-               <property name="font">
-                <font>
-                 <family>黑体</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>较上日</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="lbe_add_confirm">
-               <property name="font">
-                <font>
-                 <family>黑体</family>
-                 <pointsize>16</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(245, 82, 83);</string>
-               </property>
-               <property name="text">
-                <string>+123</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QLabel" name="lbe_total_confirm">
-             <property name="font">
-              <font>
-               <family>黑体</family>
-               <pointsize>26</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="layoutDirection">
-              <enum>Qt::LeftToRight</enum>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(245, 82, 83);</string>
-             </property>
-             <property name="text">
-              <string>12345</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lbe_confirm">
-             <property name="font">
-              <font>
-               <family>黑体</family>
-               <pointsize>15</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(255, 224, 224);</string>
-             </property>
-             <property name="text">
-              <string>确诊</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QWidget" name="widget" native="true">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(253,241,241);
+border-top-left-radius:10px;</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="font">
+                 <font>
+                  <family>黑体</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(79, 79, 79);</string>
+                </property>
+                <property name="text">
+                 <string>较上日</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lbe_add_confirm">
+                <property name="font">
+                 <font>
+                  <family>黑体</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(204,30,30);</string>
+                </property>
+                <property name="text">
+                 <string>+123</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbe_total_confirm">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>30</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+                <stylestrategy>PreferDefault</stylestrategy>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(204,30,30);</string>
+              </property>
+              <property name="lineWidth">
+               <number>1</number>
+              </property>
+              <property name="text">
+               <string>74280</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbe_confirm">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>累计确诊</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <item>
-              <widget class="QLabel" name="label_6">
-               <property name="font">
-                <font>
-                 <family>黑体</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>较上日</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="lbe_add_suspect">
-               <property name="font">
-                <font>
-                 <family>黑体</family>
-                 <pointsize>16</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(255, 150, 30);</string>
-               </property>
-               <property name="text">
-                <string>+123</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QLabel" name="lbe_total_suspect">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <family>黑体</family>
-               <pointsize>26</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(255, 150, 30);
-</string>
-             </property>
-             <property name="text">
-              <string>12345</string>
-             </property>
-             <property name="textFormat">
-              <enum>Qt::AutoText</enum>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lbe_suspect">
-             <property name="font">
-              <font>
-               <family>黑体</family>
-               <pointsize>15</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(255, 238, 217);</string>
-             </property>
-             <property name="text">
-              <string>疑似</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QWidget" name="widget" native="true">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(241, 248, 244);</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="font">
+                 <font>
+                  <family>黑体</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(79, 79, 79);</string>
+                </property>
+                <property name="text">
+                 <string>较上日</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lbe_add_heal">
+                <property name="font">
+                 <font>
+                  <family>黑体</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(23, 139, 80);</string>
+                </property>
+                <property name="text">
+                 <string>---</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbe_total_heal">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>30</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(23, 139, 80);</string>
+              </property>
+              <property name="text">
+               <string>-----</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbe_heal">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>累计治愈</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_6">
-             <item>
-              <widget class="QLabel" name="label_7">
-               <property name="font">
-                <font>
-                 <family>黑体</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>较上日</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="lbe_add_heal">
-               <property name="font">
-                <font>
-                 <family>黑体</family>
-                 <pointsize>16</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(23, 139, 80);</string>
-               </property>
-               <property name="text">
-                <string>+123</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QLabel" name="lbe_total_heal">
-             <property name="font">
-              <font>
-               <family>黑体</family>
-               <pointsize>26</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(23, 139, 80);</string>
-             </property>
-             <property name="text">
-              <string>12345</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lbe_heal">
-             <property name="font">
-              <font>
-               <family>黑体</family>
-               <pointsize>15</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(223, 238, 230);</string>
-             </property>
-             <property name="text">
-              <string>治愈</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_3">
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
-             <item>
-              <widget class="QLabel" name="label_5">
-               <property name="font">
-                <font>
-                 <family>黑体</family>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string>较上日</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="lbe_add_dead">
-               <property name="font">
-                <font>
-                 <family>黑体</family>
-                 <pointsize>16</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color: rgb(102, 102, 108);</string>
-               </property>
-               <property name="text">
-                <string>+123</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <widget class="QLabel" name="lbe_total_dead">
-             <property name="font">
-              <font>
-               <family>黑体</family>
-               <pointsize>26</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">color: rgb(102, 102, 108);</string>
-             </property>
-             <property name="text">
-              <string>12345</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lbe_dead">
-             <property name="font">
-              <font>
-               <family>黑体</family>
-               <pointsize>15</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(238, 238, 238);</string>
-             </property>
-             <property name="text">
-              <string>死亡</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QWidget" name="widget" native="true">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(243, 246, 248);
+border-top-right-radius:10px;</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QLabel" name="label_5">
+                <property name="font">
+                 <font>
+                  <family>黑体</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(79, 79, 79);</string>
+                </property>
+                <property name="text">
+                 <string>较上日</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lbe_add_dead">
+                <property name="font">
+                 <font>
+                  <family>黑体</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(102, 102, 108);</string>
+                </property>
+                <property name="text">
+                 <string>---</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbe_total_dead">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>30</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(102, 102, 108);</string>
+              </property>
+              <property name="text">
+               <string>-----</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbe_dead">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>累计死亡</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
         </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_13">
+       <property name="spacing">
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="widget" native="true">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(253, 241, 241);
+border-bottom-left-radius:10px</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_11">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <item>
+             <widget class="QLabel" name="label_10">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(79, 79, 79);</string>
+              </property>
+              <property name="text">
+               <string>较上日</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbe_add_nowConfirm">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(245, 82, 83);</string>
+              </property>
+              <property name="text">
+               <string>---</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbe_total_nowConfirm">
+            <property name="font">
+             <font>
+              <family>黑体</family>
+              <pointsize>30</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(245, 82, 83);</string>
+            </property>
+            <property name="text">
+             <string>-----</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbe_confirm_2">
+            <property name="font">
+             <font>
+              <family>黑体</family>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>现有确诊</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget" native="true">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 245, 233);</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_6">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(79, 79, 79);</string>
+              </property>
+              <property name="text">
+               <string>今日新增</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbe_add_suspect">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 150, 30);</string>
+              </property>
+              <property name="text">
+               <string>---</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbe_total_suspect">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>黑体</family>
+              <pointsize>30</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 150, 30);
+</string>
+            </property>
+            <property name="text">
+             <string>-----</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::AutoText</enum>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbe_suspect">
+            <property name="font">
+             <font>
+              <family>黑体</family>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>现有疑似</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget" native="true">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(250, 242, 246);
+border-bottom-right-radius:10px</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_17">
+            <item>
+             <widget class="QLabel" name="label_12">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(79, 79, 79);</string>
+              </property>
+              <property name="text">
+               <string>较上日</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="lbe_add_nowSevere">
+              <property name="font">
+               <font>
+                <family>黑体</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(202,63,129);</string>
+              </property>
+              <property name="text">
+               <string>---</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbe_total_nowSevere">
+            <property name="font">
+             <font>
+              <family>黑体</family>
+              <pointsize>30</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(202,63,129);</string>
+            </property>
+            <property name="text">
+             <string>-----</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbe_heal_2">
+            <property name="font">
+             <font>
+              <family>黑体</family>
+              <pointsize>15</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>现有重症</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </item>
@@ -459,7 +703,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,8,1,3">
+      <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,8,1,8">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_10">
          <item>
@@ -1076,6 +1320,9 @@ background-color: rgb(243, 246, 248);</string>
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="html">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -1107,6 +1354,9 @@ p, li { white-space: pre-wrap; }
              <family>黑体</family>
              <pointsize>12</pointsize>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>更新</string>

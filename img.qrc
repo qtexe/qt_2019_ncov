@@ -1,1 +1,6 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/">
+        <file>my_sub.jpg</file>
+        <file>new_top.jpg</file>
+    </qresource>
+</RCC>

@@ -110,8 +110,7 @@ void Dialog::widgetDrawLine(QCustomPlot *widget, QVector<QString> date,
 {
     uint16_t dataSize = date.size();
 //    qDebug() << dataSize;
-    double maxValue = 0;
-    maxValue = getMaxVaule(data1Dub, data2Dub);
+    double maxValue = getMaxVaule(data1Dub, data2Dub);;
 
     QVector<double> ticks;
     for(int i = 0; i < dataSize; i++)

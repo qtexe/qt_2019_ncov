@@ -23,7 +23,9 @@
 #include "qjsonvalue.h"
 
 #include <QTreeWidgetItem>
+
 #include <QTextStream>
+#include <QApplication>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -31,9 +33,17 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //右上角不显示帮助按钮
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
+    //属性的用法
+    /*
+    ui->lbe_add_confirm->setProperty("number", 1933);   //不可见，仅为一个属性
+    QVariant number = ui->lbe_add_confirm->property("number");
+    qDebug() << number;     //QVariant(int, 1933)
+*/
     this->setWindowTitle("2019_nCoV冠状病毒感染疫情实时监控_" + verison);
     manager = new QNetworkAccessManager(this);          //新建网络请求对象
-    emit on_btn_update_clicked();
 
     wigetAddGraph(ui->widget_chart);
 
@@ -51,7 +61,7 @@ Dialog::Dialog(QWidget *parent) :
     ui->btn_group->setId(ui->btn_line_2, 2);
     ui->btn_group->setId(ui->btn_line_3, 3);
 
-//    ui->rb0_add->setCheckable(true);
+    emit on_btn_update_clicked();
 }
 
 

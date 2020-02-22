@@ -10,6 +10,9 @@
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
 #include <QtNetwork/QNetworkConfigurationManager>
+#include <QtNetwork/QSslConfiguration>
+#include <QtNetwork/QSslSocket>
+
 #include <QDesktopServices>
 
 //JSON相关头文件
@@ -23,6 +26,7 @@
 #include "qcustomplot.h"
 #include "about.h"
 #include "rumor.h"
+#include "news_info.h"
 
 namespace Ui {
 class Dialog;
@@ -67,6 +71,8 @@ public:
     void wigetSetColor(QCustomPlot *widget, QColor clr1, QColor clr2);
     QString rgbToStyle(QColor rbg);
     void setSelectStyle(int id);
+    void parseAddSwitch(QJsonObject sw_obj);
+    void showAddData(QString key, int num, QLabel *lbe);
 
 private slots:
     void on_btn_update_clicked();
@@ -92,7 +98,7 @@ private:
     QUrl url;
     QFile *file;
     QString filename;
-    QString verison = "v1.1";
+    QString verison = "v1.2";
     //腾讯,最新接口有新闻,添加了病死率和治愈率
     QString dataApi = "http://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&_=";     //时间戳可以不添加
     //2020_02_10:添加最新动态新闻键值，大小116KB
@@ -133,8 +139,17 @@ private:
     QVector<double> chinaDayListDeadRate;  //累计死亡率，从1.20开始
     QVector<QString> RateDate;  //从1.20日开始
 
+    QMap<QString, bool> AddSwitchMap;    //保存键值对
+
+    /*
+
+
+
+    */
+
     about ab_win;
     rumor rm_win;
+    news_info newsInfo_win;
 };
 
 class ncovPerson

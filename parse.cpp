@@ -25,11 +25,16 @@ int Dialog::dataParse(QByteArray str)
             QString data_str = root_obj.value("data").toString();
             QJsonObject data_obj = QJsonDocument::fromJson(data_str.toUtf8(),&err_rpt).object();
 
+            //获取显示开关
+            QJsonObject AddSwitch = data_obj.value("showAddSwitch").toObject();
+            parseAddSwitch(AddSwitch);
+
             //网易api的data是一个对象
 //            QJsonObject data_obj = root_obj.value("data").toObject();
 
             QJsonObject chinaTotal = data_obj.value("chinaTotal").toObject();
             QJsonObject chinaAdd = data_obj.value("chinaAdd").toObject();
+            //获取累计数据和新增数据，并显示
             getTotalAddData(chinaTotal, chinaAdd);  //全国累计和新增数据显示
 
             QString lastUpdateTime = data_obj.value("lastUpdateTime").toString();
@@ -153,7 +158,7 @@ void Dialog::chinaDayAddListParse(QJsonArray chinaDayAddListObj)
         AddDeadDub << dead;
         AddHealDub << heal;
 
-        if(i == arraySize - 1)
+        if(i == arraySize - 1)  //新增疑似取最新的历史数据
             ui->lbe_add_suspect->setText("+" + QString::number(AddSuspectDub[arraySize-1]));
     }
 }
@@ -274,16 +279,29 @@ int Dialog::getTotalAddData(QJsonObject chinaTotal, QJsonObject chinaAdd)
 
         getNum(chinaAdd, &chinaAdd_confirm, &chinaAdd_suspect, &chinaAdd_dead, &chinaAdd_heal);
         getNum(chinaTotal, &chinaTotal_confirm, &chinaTotal_suspect, &chinaTotal_dead, &chinaTotal_heal);
-
+        //显示累计数据
         ui->lbe_total_confirm->setText(QString::number(chinaTotal_confirm));
         ui->lbe_total_suspect->setText(QString::number(chinaTotal_suspect));
         ui->lbe_total_dead->setText(QString::number(chinaTotal_dead));
         ui->lbe_total_heal->setText(QString::number(chinaTotal_heal));
 
-        ui->lbe_add_confirm->setText("+" + QString::number(chinaAdd_confirm));
-//        ui->lbe_add_suspect->setText("+" + QString::number(chinaAdd_suspect));        //取最新值
-        ui->lbe_add_dead->setText("+" + QString::number(chinaAdd_dead));
-        ui->lbe_add_heal->setText("+" + QString::number(chinaAdd_heal));
+        int total_nowConfirm = chinaTotal.value("nowConfirm").toDouble();     //现有确诊
+        int total_nowSevere = chinaTotal.value("nowSevere").toDouble();       //现有重症
+
+        ui->lbe_total_nowConfirm->setText(QString::number(total_nowConfirm));
+        ui->lbe_total_nowSevere->setText(QString::number(total_nowSevere));
+
+        //显示新增
+        int chinaAdd_nowConfirm = chinaAdd.value("nowConfirm").toDouble();
+        int chinaAdd_nowServere = chinaAdd.value("nowSevere").toDouble();
+
+        showAddData("confirm", chinaAdd_confirm, ui->lbe_add_confirm);
+        showAddData("suspect", chinaAdd_suspect, ui->lbe_add_suspect);
+        showAddData("dead", chinaAdd_dead, ui->lbe_add_dead);
+        showAddData("heal", chinaAdd_heal, ui->lbe_add_heal);
+        showAddData("nowConfirm", chinaAdd_nowConfirm, ui->lbe_add_nowConfirm);
+        showAddData("nowServere", chinaAdd_nowServere, ui->lbe_add_nowSevere);
+
         QString tip = "较上日国家卫健委公布的现有疑似病例数" + QString::number(chinaAdd_suspect);
 
         ui->lbe_suspect->setToolTip(tip);
@@ -298,11 +316,11 @@ void Dialog::articleParse(QJsonArray arr)
 {
     uint16_t arrSize = arr.size();
 //    qDebug() << "共 " << arrSize << " 条新闻";
-
-//    qDebug() << QDir::current();
 //    qDebug() << QCoreApplication::applicationDirPath();
 //    qDebug() << QCoreApplication::applicationFilePath();
 //    qDebug() << QCoreApplication::applicationName();
+
+//    QString tmp = newsHtmlFileName;
     QString tmp = QCoreApplication::applicationDirPath() + "/" + newsHtmlFileName;
     QFile file(tmp);
 
@@ -366,4 +384,45 @@ QVector<double> Dialog::QStringToDouble(QVector<QString> str, uint16_t len)
         dub[i] = str[i].toDouble();
     }
     return dub;
+}
+
+//显示新增数据
+void Dialog::showAddData(QString key, int num, QLabel *lbe)
+{
+    QString str_num;
+    if(num > 0)
+        str_num = "+" + QString::number(num);
+    else
+        str_num = QString::number(num);
+
+    bool sw = AddSwitchMap.value(key);
+
+    QString str = (sw) ? str_num : "待公布";
+
+    lbe->setText(str);
+}
+
+void Dialog::parseAddSwitch(QJsonObject sw_obj)
+{
+    bool sw_all        = sw_obj.value("all").toBool();
+    bool sw_confirm    = sw_obj.value("confirm").toBool();
+    bool sw_suspect    = sw_obj.value("suspect").toBool();
+    bool sw_dead       = sw_obj.value("dead").toBool();
+    bool sw_heal       = sw_obj.value("heal").toBool();
+    bool sw_nowConfirm = sw_obj.value("nowConfirm").toBool();
+    bool sw_nowSevere  = sw_obj.value("nowSevere").toBool();
+
+    AddSwitchMap.clear();
+    AddSwitchMap.insert("all", sw_all);
+    AddSwitchMap.insert("confirm", sw_confirm);
+    AddSwitchMap.insert("suspect", sw_suspect);
+    AddSwitchMap.insert("dead", sw_dead);
+    AddSwitchMap.insert("heal", sw_heal);
+    AddSwitchMap.insert("nowConfirm", sw_nowConfirm);
+    AddSwitchMap.insert("nowServere", sw_nowSevere);
+
+//    AddSwitchMap["all"] = false;        //用于赋值
+//    if(AddSwitchMap.contains("all"));    //用于查询，是否包含
+//        bool val = AddSwitchMap.value("all");                //用于获取值
+
 }

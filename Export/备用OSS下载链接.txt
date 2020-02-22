@@ -1,17 +1,17 @@
-v1.0
-
-安装版：
-https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/20200212_qt_2019_ncov_install.exe
-
-免安装版：
-https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/20200212_qt_2019_ncov_portable.exe
-
+v1.2
+    安装版：
+    https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/v1.2_20200222_qt_2019_ncov_install.exe
+    免安装版：
+    https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/v1.2_20200222_qt_2019_ncov_portable.exe
 
 v1.1
+    安装版：
+    https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/v1.1_20200214_qt_2019_ncov_install.exe
+    免安装版：
+    https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/v1.1_20200214_qt_2019_ncov_portable.exe
 
-安装版：
-https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/v1.1_20200214_qt_2019_ncov_install.exe
-
-免安装版：
-https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/v1.1_20200214_qt_2019_ncov_portable.exe
-
+v1.0
+    安装版：
+    https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/20200212_qt_2019_ncov_install.exe
+    免安装版：
+    https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/20200212_qt_2019_ncov_portable.exe

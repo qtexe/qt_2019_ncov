@@ -9,10 +9,12 @@ INPUT(
 ./release\about.o
 ./release\rumor.o
 ./release\rumor_info.o
+./release\news_info.o
 ./release\qrc_img.o
 ./release\moc_dialog.o
 ./release\moc_qcustomplot.o
 ./release\moc_about.o
 ./release\moc_rumor.o
 ./release\moc_rumor_info.o
+./release\moc_news_info.o
 );

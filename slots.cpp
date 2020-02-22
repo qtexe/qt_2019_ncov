@@ -3,8 +3,27 @@
 
 void Dialog::anchorClickedSlot(const QUrl& url)
 {
-    QDesktopServices::openUrl(url);
-//    ShellExecuteA(NULL, "open", url.toString().toStdString().c_str(), "", "", SW_SHOW);
+    //更多报道:840*520
+    QString moreUrl = "https://new.qq.com/ch/antip/";
+    //视频直播:1230*520
+    QString cctvUrl = "http://tv.cctv.com/live/cctv13/";
+    QString urlStr = url.toString();
+
+    QNetworkConfigurationManager mgr;
+    if(mgr.isOnline() == true)
+    {
+        if(urlStr != moreUrl && urlStr != cctvUrl)
+        {
+            qDebug() << urlStr;
+//            this->setWindowModality(Qt::WindowModal);   //不阻塞当前窗口的进程
+            newsInfo_win.openURL(url);
+            newsInfo_win.exec();
+        }
+        else
+            QDesktopServices::openUrl(url);
+    }
+    else
+        QMessageBox::warning(NULL, "错误", "无网络连接，请检查网络", QMessageBox::Yes);
 }
 void Dialog::closeEvent(QCloseEvent *win)
 {
