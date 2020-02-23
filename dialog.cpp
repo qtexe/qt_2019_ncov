@@ -77,14 +77,41 @@ void Dialog::on_btn_update_clicked()
     if(isNetWorkOnline() == true)
     {
     //    ui->btn_update->setEnabled(false);
+        /*
+        QList<QString> list;
+        list.clear();
+        list << "2020-01-15_09_00_00_000";
+        list << "2020-01-20_09_00_00_000";
+        list << "2020-01-25_09_00_00_000";
+        list << "2020-02-05_09_00_00_000";
+        list << "2020-02-10_09_00_00_000";
+        list << "2020-02-15_09_00_00_000";
+        list << "2020-02-20_09_00_00_000";
+        list << "2020-02-23_09_00_00_000";
+        static int i = 0;
+        QDateTime dateTime = QDateTime::fromString(list[i], "yyyy-MM-dd_hh_mm_ss_zzz");
+        qint64 timestamp = dateTime.toMSecsSinceEpoch();        //毫秒级时间戳
+        QString current_time = list[i];
+        qDebug() << list[i] << timestamp;
+        i++;
+        */
         qint64 timestamp = QDateTime::currentDateTime().toMSecsSinceEpoch(); //毫秒级
         QString current_time =  QDateTime::currentDateTime().toString("yyyyMMdd_hh_mm_ss_zzz");
 
         QString timestamp_str;
         timestamp_str.setNum(timestamp, 10);
-        //包括累计和各省市具体数据
-    //    url = QUrl(dataApi + timestamp_str);
-        url = QUrl("https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5");
+
+        if(selAPI == 1)
+            selAPI = 2;
+        else if(selAPI == 2)
+            selAPI = 1;
+
+        if(selAPI == 1)
+            url = QUrl(data1_Api + timestamp_str);
+        else if(selAPI == 2)
+            url = QUrl(data2_Api + timestamp_str);
+
+//        url = QUrl("https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5");
         //只包含全国累计数据
     //    url = QUrl("https://ncov-api.werty.cn:2021/latest/tx/");
 //        qDebug() << url.toString();

@@ -21,60 +21,51 @@ int Dialog::dataParse(QByteArray str)
         if(root_obj.contains("data"))
         {
 //            qDebug() << root_obj.value("ret").toString();
-            //腾讯api的data是一个字符串
+
             QString data_str = root_obj.value("data").toString();
             QJsonObject data_obj = QJsonDocument::fromJson(data_str.toUtf8(),&err_rpt).object();
+            if(selAPI == 1)
+            {
+                //获取显示开关
+                QJsonObject AddSwitch = data_obj.value("showAddSwitch").toObject();
+                parseAddSwitch(AddSwitch);
 
-            //获取显示开关
-            QJsonObject AddSwitch = data_obj.value("showAddSwitch").toObject();
-            parseAddSwitch(AddSwitch);
+                QJsonObject chinaTotal = data_obj.value("chinaTotal").toObject();
+                QJsonObject chinaAdd = data_obj.value("chinaAdd").toObject();
+                //获取累计数据和新增数据，并显示
+                getTotalAddData(chinaTotal, chinaAdd);  //全国累计和新增数据显示
+                QString lastUpdateTime = data_obj.value("lastUpdateTime").toString();
+                ui->lbe_update_time->setText(lastUpdateTime);
 
-            //网易api的data是一个对象
-//            QJsonObject data_obj = root_obj.value("data").toObject();
+                QJsonArray areaTree_obj = data_obj.value("areaTree").toArray();
+                QJsonObject chinaTree_obj = areaTree_obj.at(0).toObject();     //第0个是中国
+                chinaTreeParse(chinaTree_obj);
+                countryTreeParse(areaTree_obj);
+            }
+            /*以下数据在api2*/
+            else if(selAPI == 2)
+            {
+                QJsonArray chinaDayListObj = data_obj.value("chinaDayList").toArray();
+                chinaDayListParse(chinaDayListObj);
 
-            QJsonObject chinaTotal = data_obj.value("chinaTotal").toObject();
-            QJsonObject chinaAdd = data_obj.value("chinaAdd").toObject();
-            //获取累计数据和新增数据，并显示
-            getTotalAddData(chinaTotal, chinaAdd);  //全国累计和新增数据显示
+                QJsonArray chinaDayAddListObj = data_obj.value("chinaDayAddList").toArray();
+                chinaDayAddListParse(chinaDayAddListObj);
 
-            QString lastUpdateTime = data_obj.value("lastUpdateTime").toString();
-            ui->lbe_update_time->setText(lastUpdateTime);
-
-            QJsonArray areaTree_obj = data_obj.value("areaTree").toArray();
-            QJsonObject chinaTree_obj = areaTree_obj.at(0).toObject();     //第0个是中国
-//            qDebug() << "chinaTree";
-            chinaTreeParse(chinaTree_obj);
-//            qDebug() << "conutryTree";
-            countryTreeParse(areaTree_obj);
-
-            QJsonArray chinaDayListObj = data_obj.value("chinaDayList").toArray();
-//            qDebug() << "chinaDayList";
-            chinaDayListParse(chinaDayListObj);
-
-            QJsonArray chinaDayAddListObj = data_obj.value("chinaDayAddList").toArray();
-//            qDebug() << "chinaDayAddList";
-            chinaDayAddListParse(chinaDayAddListObj);
-
-            //新闻解析
-            QJsonArray articleArr = data_obj.value("articleList").toArray();
-//            qDebug() << "article";
-            articleParse(articleArr);
-//            qDebug() << "article ok";
-            disInfo("更新成功");
-            connect(ui->widget_chart, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(widget_chart_event(QMouseEvent*)));
-
-            connect(ui->btn_group, SIGNAL(buttonClicked(int)), this, SLOT(drawCharts(int)));
-//            connect(ui->rb_group, SIGNAL(buttonClicked(int)), this, SLOT(drawCharts(int)));
-
-            //默认绘制
-            setSelectStyle(0);
-//            qDebug() << "DrawLine";
-            clickId = 0;     //修复当点击死亡率按钮之后，再更新按钮，此时tip单位还是%的BUG
-            widgetDrawLine(ui->widget_chart, "新增疑似/确诊趋势", "新增确诊", "新增疑似",
-                clr1_1, clr1_2, AddDate, AddConfirmDub, AddSuspectDub);
+                QJsonArray articleArr = data_obj.value("articleList").toArray();
+                articleParse(articleArr);
+                connect(ui->widget_chart, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(widget_chart_event(QMouseEvent*)));
+                connect(ui->btn_group, SIGNAL(buttonClicked(int)), this, SLOT(drawCharts(int)));
+                //默认绘制
+                setSelectStyle(0);
+                clickId = 0;     //修复当点击死亡率按钮之后，再更新按钮，此时tip单位还是%的BUG
+                widgetDrawLine(ui->widget_chart, "新增疑似/确诊趋势", "新增确诊", "新增疑似",
+                    clr1_1, clr1_2, AddDate, AddConfirmDub, AddSuspectDub);
+            }
         }
         qDebug() << "疫情数据更新成功";
 //        ui->btn_update->setEnabled(true);
+        if(selAPI == 2)
+            emit on_btn_update_clicked();
     }
     else
         qDebug() << "更新失败";
@@ -99,7 +90,6 @@ void Dialog::chinaDayListParse(QJsonArray chinaDayListObj)
     RateDate.clear();
     chinaDayListHealRate.clear();       //累计治愈率，从1.20开始
     chinaDayListDeadRate.clear();       //累计死亡率，从1.20开始
-
     for(int i = 0; i < arraySize; i++)
     {
         QJsonObject chinaDay = chinaDayListObj.at(i).toObject();
@@ -165,17 +155,12 @@ void Dialog::chinaDayAddListParse(QJsonArray chinaDayAddListObj)
 //中国疫情数据解析
 void Dialog::chinaTreeParse(QJsonObject chinaTree)
 {
-    QString chinaName = chinaTree.value("name").toString();
-
     QJsonObject chinaTotal_obj = chinaTree.value("total").toObject();
-    //中国累计
-    QString chinaTotalConfirm = QString::number(chinaTotal_obj.value("confirm").toInt());    //28130;
-    QString chinaTotalSuspect = QString::number(chinaTotal_obj.value("suspect").toInt());    //0;
-    QString chinaTotalDead    = QString::number(chinaTotal_obj.value("dead").toInt());        //564
-    QString chinaTotalHeal    = QString::number(chinaTotal_obj.value("heal").toInt());        //1301
-//    ui->tb_info_2->setText(chinaName);
-
-//    qDebug() << chinaName << chinaTotalConfirm << chinaTotalSuspect << chinaTotalHeal << chinaTotalDead;;
+//    QString chinaName = chinaTree.value("name").toString();
+//    QString chinaTotalConfirm = QString::number(chinaTotal_obj.value("confirm").toInt());    //28130;
+//    QString chinaTotalSuspect = QString::number(chinaTotal_obj.value("suspect").toInt());    //0;
+//    QString chinaTotalDead    = QString::number(chinaTotal_obj.value("dead").toInt());        //564
+//    QString chinaTotalHeal    = QString::number(chinaTotal_obj.value("heal").toInt());        //1301
 
     QJsonArray provinces_obj = chinaTree.value("children").toArray();    //包含所有的省份
 
@@ -296,7 +281,7 @@ int Dialog::getTotalAddData(QJsonObject chinaTotal, QJsonObject chinaAdd)
         int chinaAdd_nowServere = chinaAdd.value("nowSevere").toDouble();
 
         showAddData("confirm", chinaAdd_confirm, ui->lbe_add_confirm);
-        showAddData("suspect", chinaAdd_suspect, ui->lbe_add_suspect);
+//        showAddData("suspect", chinaAdd_suspect, ui->lbe_add_suspect);
         showAddData("dead", chinaAdd_dead, ui->lbe_add_dead);
         showAddData("heal", chinaAdd_heal, ui->lbe_add_heal);
         showAddData("nowConfirm", chinaAdd_nowConfirm, ui->lbe_add_nowConfirm);

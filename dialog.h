@@ -100,13 +100,16 @@ private:
     QString filename;
     QString verison = "v1.2";
     //腾讯,最新接口有新闻,添加了病死率和治愈率
-    QString dataApi = "http://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&_=";     //时间戳可以不添加
+    QString data1_Api = "http://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&_=";     //时间戳可以不添加
+    QString data2_Api = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_other&_=";     //时间戳可以不添加
     //2020_02_10:添加最新动态新闻键值，大小116KB
 
     //网易api,目前还没新闻，和腾讯非常相似
 //    QString dataApi = "https://c.m.163.com/ug/api/wuhan/app/data/list-total?t=";
 //    QString newsApi = "http://api.tianapi.com/txapi/ncov/index?key=964dc226dd5b57e892e6199735b6c55f";
-    bool dataFlag = true;   //true:data, false:news
+    uint8_t selAPI = 1;
+    bool dat1_parse_ok = true;
+
     int clickId = 0;
     uint8_t updateTime = 5;     //默认5分钟更新一次
     QString newsHtmlFileName = "html_news.txt";
