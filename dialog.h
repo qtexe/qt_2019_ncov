@@ -26,7 +26,6 @@
 #include "qcustomplot.h"
 #include "about.h"
 #include "rumor.h"
-#include "news_info.h"
 
 namespace Ui {
 class Dialog;
@@ -144,15 +143,8 @@ private:
 
     QMap<QString, bool> AddSwitchMap;    //保存键值对
 
-    /*
-
-
-
-    */
-
     about ab_win;
     rumor rm_win;
-    news_info newsInfo_win;
 };
 
 class ncovPerson

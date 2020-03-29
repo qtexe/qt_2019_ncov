@@ -2,6 +2,16 @@
 
 基于Qt/C++框架实现的新冠肺炎疫情数据可视化显示。主要包括新型冠状病毒肺炎疫情数据实时查看，确诊/疑似/治愈/死亡数据趋势折线图，各省市和海外数据树形显示，实时新闻动态显示等，数据源来自腾讯新闻接口，数据格式为JSON。
 
+桌面PC版，项目地址https://github.com/qtexe/qt_2019_ncov
+
+![](https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/qt_2019_ncov.jpg)
+
+
+嵌入式Linux版，项目地址：https://github.com/qtexe/qte_2019_ncov
+
+![](https://wcc-blog.oss-cn-beijing.aliyuncs.com/QtUpdate/qt_2019_ncov/qte_2019_ncov.jpg)
+
+
 ### 如何实现
 
 我的博客文章:

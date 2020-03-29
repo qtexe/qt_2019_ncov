@@ -18,7 +18,6 @@
 #include <QJsonArray>
 
 #include "rumor_info.h"
-#include "news_info.h"
 
 namespace Ui {
 class rumor;
@@ -60,7 +59,6 @@ private:
     QString filename;
 //    QString html;
     rumor_info info;
-    news_info moreRumor;
 };
 
 #endif // RUMOR_H

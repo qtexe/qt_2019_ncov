@@ -212,7 +212,6 @@ Makefile: ../qt_2019_ncov.pro D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qma
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/moc.prf \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/win32/opengl.prf \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/uic.prf \
-		D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/win32/dumpcpp.prf \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/qmake_use.prf \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/file_copies.prf \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/win32/windows.prf \
@@ -223,8 +222,6 @@ Makefile: ../qt_2019_ncov.pro D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qma
 		../qt_2019_ncov.pro \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/qtmain.prl \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5PrintSupport.prl \
-		D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5AxContainer.prl \
-		D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5AxBase.prl \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl \
 		D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Network.prl \
@@ -383,7 +380,6 @@ D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/resources.prf:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/moc.prf:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/win32/opengl.prf:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/uic.prf:
-D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/win32/dumpcpp.prf:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/qmake_use.prf:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/file_copies.prf:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/win32/windows.prf:
@@ -394,8 +390,6 @@ D:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/lex.prf:
 ../qt_2019_ncov.pro:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/qtmain.prl:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5PrintSupport.prl:
-D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5AxContainer.prl:
-D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5AxBase.prl:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl:
 D:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Network.prl:

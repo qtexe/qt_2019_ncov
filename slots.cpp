@@ -12,15 +12,7 @@ void Dialog::anchorClickedSlot(const QUrl& url)
     QNetworkConfigurationManager mgr;
     if(mgr.isOnline() == true)
     {
-        if(urlStr != moreUrl && urlStr != cctvUrl)
-        {
-            qDebug() << urlStr;
-//            this->setWindowModality(Qt::WindowModal);   //不阻塞当前窗口的进程
-            newsInfo_win.openURL(url);
-            newsInfo_win.exec();
-        }
-        else
-            QDesktopServices::openUrl(url);
+        QDesktopServices::openUrl(url);
     }
     else
         QMessageBox::warning(NULL, "错误", "无网络连接，请检查网络", QMessageBox::Yes);

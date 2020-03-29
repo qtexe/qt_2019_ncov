@@ -32,26 +32,23 @@ SOURCES += main.cpp\
     slots.cpp \
     about.cpp \
     rumor.cpp \
-    rumor_info.cpp \
-    news_info.cpp
+    rumor_info.cpp
 
 HEADERS  += dialog.h \
     qcustomplot.h \
     about.h \
     rumor.h \
-    rumor_info.h \
-    news_info.h
+    rumor_info.h
 
 FORMS    += dialog.ui \
     about.ui \
     rumor.ui \
-    rumor_info.ui \
-    news_info.ui
+    rumor_info.ui
 
 
 QT += network
 QT += printsupport
-QT += axcontainer
+#QT += axcontainer
 
 RESOURCES += \
     img.qrc
